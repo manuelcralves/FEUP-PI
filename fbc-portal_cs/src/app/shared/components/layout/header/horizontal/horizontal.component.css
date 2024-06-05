@@ -1,0 +1,16 @@
+@media (max-width: 767.98px) {
+    .header-navbar .navbar-header {
+        width: 100% !important;
+        top: 3px;
+    }
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+  top: auto;
+}
+
+/* .navbar-light {
+    z-index: 1038 !important;
+} */

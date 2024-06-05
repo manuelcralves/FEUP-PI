@@ -1,0 +1,16 @@
+<div class="file-box">
+    <div class="file">
+        <span class="corner"></span>
+        <span>
+            <div class="icone-apagar-ficheiro" *ngIf="removable" title="Remover">
+                <span class="la la-trash" (click)="remover($event)"></span>
+            </div>
+            <div class="icon">
+                <i class="la la-file-text"></i>
+            </div>
+            <div class="file-name">
+                <span [title]="labelText + ' (' + fileSize() + ')'">{{labelText}} ({{fileSize()}})</span>
+            </div>
+        </span>
+    </div>
+</div>

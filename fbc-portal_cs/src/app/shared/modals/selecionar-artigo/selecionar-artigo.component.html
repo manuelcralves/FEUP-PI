@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h3 class="modal-title"><i class="feather ft-box"></i> Artigos</h3>
+    <button type="button" class="close" aria-label="Fechar" (click)="modal.dismiss('fechar')">
+        <span aria-hidden=" true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="input-group mt-1">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-success border-success white"><i class="la la-search"></i></span>
+        </div>
+        <input type="text" class="form-control col-artigo" placeholder="Artigo" ngbAutofocus [(ngModel)]="artigo">
+        <input type="text" class="form-control" placeholder="Descricao" ngbAutofocus [(ngModel)]="descricao">
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-artigo">Artigo</th>
+                    <th scope="col" class="col-nome">Descrição</th>
+                    <th scope="col" class="col-unidade">Unidade</th>
+                    <th scope="col" class="col-buttons"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let artigo of artigosFiltrados() | slice: (page - 1) * pageSize : page * pageSize">
+                    <td>{{artigo[codigoArtigo]}}</td>
+                    <td>{{artigo.Descricao}}</td>
+                    <td>{{artigo.UnidadeVenda}}</td>
+                    <td><button type="button" class="btn btn-sm btn-outline-success" aria-label="Selecionar" (click)="modal.close(artigo)"><i class="feather ft-plus"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center" [pageSize]="pageSize" [collectionSize]="artigosFiltrados()?.length ?? 0" [(page)]="page" [boundaryLinks]="true" [maxSize]="5" [rotate]="true"></ngb-pagination>
+</div>

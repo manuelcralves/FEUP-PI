@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h3 class="modal-title"><i class="feather ft-user"></i> Membro</h3>
+    <button type="button" class="close" aria-label="Fechar" (click)="modal.dismiss('fechar')">
+        <span aria-hidden=" true">&times;</span>
+    </button>
+</div>
+<form>
+    <div class="modal-body">
+        <form [formGroup]="teamUserForm"  (ngSubmit)="onSubmit(teamUserForm.getRawValue())" >
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Utilizador</label>
+                    <div class="position-relative has-icon-left"> 
+                         <div class="input-group">
+                            <select class="form-control cod-label" formControlName="Utilizador" (change)="loadUserInfo($event.target.value)">
+                                <option></option>
+                                <option [value]="User.Codigo" *ngFor="let User of Users"> {{User.Codigo}}</option>
+                            </select>
+                            <input type="text"  class="form-control"  formControlName="Nome">
+                            <div class="form-control-position"><i class="feather ft-user"></i></div>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <div class="position-relative has-icon-left">
+                        <input type="email"  class="form-control"  formControlName="Email">
+                        <div class="form-control-position"><i class="la la-envelope"></i></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Equipa</label>
+                    <ng-select [searchable]="true" [multiple]="false" placeholder="Selecionar a equipa."  formControlName="Equipa" >
+                        <ng-option *ngFor="let Team of Teams" [value]="Team.Codigo">{{Team.Descricao}}</ng-option>
+                    </ng-select>
+                  </div>
+
+            </div>    
+            <div class="form-actions right">
+                <button type="button" class="btn btn-sm btn-outline-dark mr-1"><i class="feather ft-x"></i> Cancelar</button>
+                <button type="submit" class="btn btn-sm btn-outline-success"><i class="la la-check"></i> Gravar</button>
+            </div>
+        </form>
+    </div>
+</form>

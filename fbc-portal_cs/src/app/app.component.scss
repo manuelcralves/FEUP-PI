@@ -1,0 +1,58 @@
+// transparência em background de loading
+:host ::ng-deep .block-ui-wrapper {
+    background: rgba(0, 0, 0, 0.233);
+}
+
+
+::ng-deep {
+    // correção a cores de date picker (cores do tema sobrepunha)
+    ngb-datepicker {
+        .btn-light:not(:disabled):not(.disabled):active,
+        .btn-light:not(:disabled):not(.disabled).active {
+            background-color: #dae0e5 !important;
+            border-color: #d3d9df !important;
+        }
+
+        .btn-light:hover {
+            background-color: #e2e6ea !important;
+            border-color: #dae0e5 !important;
+        }
+
+        .btn-light.disabled,
+        .btn-light:disabled {
+            background-color: #f8f9fa !important;
+            border-color: #f8f9fa !important;
+        }
+
+        .btn-light {
+            color: unset !important;
+            background-color: unset !important;
+            border-color: unset !important;
+        }
+
+        .bg-primary,
+        .bg-primary:hover,
+        .bg-primary:not(:disabled):not(.disabled):active,
+        .bg-primary:not(:disabled):not(.disabled).active,
+        .bg-primary.disabled,
+        .bg-primary:disabled {
+            background-color: #0aa717a2 !important;
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .ngb-dp-weekdays {
+            background-color: #f8f9fa;
+        }
+
+        .ngb-dp-header {
+            background-color: #f8f9fa;
+        }
+
+        .ngb-dp-weekday {
+            color: #01581b;
+        }
+    }
+}

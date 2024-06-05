@@ -1,0 +1,212 @@
+@import "scss/bootstrap.scss";
+@import "scss/bootstrap-extended.scss";
+@import "scss/colors.scss";
+@import "scss/components.scss";
+@import "scss/commansocial.scss";
+@import "scss/core/menu/navigation";
+@import "scss/core/menu/menu-types/vertical-menu-modern.scss";
+@import "scss/core/menu/menu-types/horizontal-menu.scss";
+@import "scss/core/colors/palette";
+@import "scss/core/colors/palette-gradient.scss";
+@import "scss/core/colors/palette-callout.scss";
+@import "scss/plugins/loaders/loaders.scss";
+@import "scss/plugins/animate/animate.scss";
+@import "~ngx-toastr/toastr";
+
+
+.animated {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+}
+
+.toast-message {
+    white-space: break-spaces;
+    margin-left: -0.3em;
+}
+
+.bigger-text-1 {
+    font-size: 120%;
+}
+
+.ng-invalid.ng-touched:not(form) {
+    border-color: #e14845;
+    border-width: 2px;
+}
+
+.form-control.ng-touched.ng-invalid ~ .invalid-feedback,
+.form-control.ng-touched.ng-invalid ~ .invalid-tooltip {
+    display: block;
+}
+
+/*
+ng-bootstrap - modal
+*/
+.modal-custom-large .modal-dialog {
+    @media (min-width: 576px) {
+        max-width: unset;
+        margin: 0.5rem;
+    }
+    @media (min-width: 992px) {
+        max-width: 942px;
+        margin: 1.75rem auto;
+    }
+    @media (min-width: 1250px) {
+        max-width: 1200px;
+    }
+}
+
+/*
+ngx-datatable
+*/
+.ngx-datatable {
+    box-shadow: none;
+    .datatable-header {
+        height: unset !important;
+        datatable-header-cell.datatable-header-cell {
+            display: flex;
+            align-items: flex-end;
+            font-weight: bold;
+            padding: 0.75rem;
+            border-top: 1px solid #e3ebf3;
+            border-bottom: 1px solid #e3ebf3;
+            .datatable-header-cell-label {
+                line-height: 24px;
+            }
+            .sort-btn {
+                margin-left: 2px;
+            }
+            &:hover .resize-handle {
+                border-right: 2px solid #e3ebf3;
+            }
+        }
+    }
+    .datatable-body {
+        .datatable-body-row {
+            vertical-align: top;
+            border-top: 1px solid #d1d4d7;
+            &.datatable-row-even {
+                background-color: rgba(245, 247, 250, 0.5);
+            }
+            &.active {
+                background-color:#007c34;
+                color: #fff;
+            }
+            .datatable-body-cell {
+                padding: 0.75rem;
+                text-align: left;
+                vertical-align: top;
+            }
+        }
+        .empty-row {
+            $alert-padding-y: 0.75rem !default;
+            $alert-padding-x: 1.25rem !default;
+            position: relative;
+            padding: $alert-padding-y $alert-padding-x;
+            margin-bottom: 0;
+        }
+        .datatable-scroll {
+            width: 100% !important; /* workaround a bug no scroll horizontal da tabela */
+        }
+        .datatable-row-detail {
+            .datatable-row-detail-wrapper {
+                padding-left: 35px;
+                margin-right: 0px;
+            }
+            .datatable-row-detail-field {
+                margin-top: 10px;
+                margin-bottom: 10px;
+
+                .field-label {
+                    font-weight: bold;
+                }
+                .field-value {
+                    margin-top: 2px;
+                    white-space: pre-line;
+                    &:empty:after {
+                        content: "-";
+                    }
+                }
+            }
+        }
+    }
+    .datatable-footer {
+        margin-top: -1px;
+        .page-count {
+            line-height: 50px;
+            height: 50px;
+            padding: 0 1.2rem;
+        }
+        datatable-pager.datatable-pager {
+            margin: 0 10px;
+            text-align: center;
+            padding-right: 19%;
+            ul {
+                li {
+                    margin: 10px 0px;
+                    a {
+                        padding: 0.22rem 0.73rem;
+                        border-radius: 0;
+                        margin: 0;
+                        margin-left: -1px;
+                        text-align: center;
+                        text-decoration: none;
+                        color: #007c34;
+                    }
+                    &:not(.disabled) {
+                        &.active {
+                            a {
+                                background-color: #007c34;
+                                color: #ffffff;
+                            }
+                        }
+                        &:hover:not(.active) {
+                            a {
+                                background-color: #f4f5fa;
+                            }
+                        }
+                    }
+                    &.disabled {
+                        a {
+                            color: #6b6f82;
+                        }
+                    }
+                }
+                li:first-child a {
+                    border-top-left-radius: 0.25rem;
+                    border-bottom-left-radius: 0.25rem;
+                    margin-left: 0;
+                }
+                li:last-child a {
+                    border-top-right-radius: 0.25rem;
+                    border-bottom-right-radius: 0.25rem;
+                }
+            }
+            .datatable-pagina-anterior,
+            .datatable-pagina-seguinte,
+            .datatable-primeira-pagina,
+            .datatable-ultima-pagina {
+                font-style: normal;
+            }
+            .datatable-pagina-anterior::before {
+                content: "«";
+            }
+            .datatable-pagina-seguinte::before {
+                content: "»";
+            }
+            .datatable-primeira-pagina::before {
+                content: "««";
+            }
+            .datatable-ultima-pagina::before {
+                content: "»»";
+            }
+        }
+    }
+    // Summary row styles
+    .datatable-summary-row {
+        .datatable-body-row {
+            .datatable-body-cell {
+                font-weight: bold;
+            }
+        }
+    }
+}

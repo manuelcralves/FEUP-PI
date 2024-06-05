@@ -1,0 +1,80 @@
+<div class="modal-header">
+    <h3 class="modal-title"><i class="feather ft-users"></i> Equipa</h3>
+    <button type="button" class="close" aria-label="Fechar" (click)="modal.dismiss('fechar')"><span aria-hidden=" true">&times;</span></button>
+</div>
+<form>
+    <div class="modal-body"> 
+        <form [formGroup]="TeamEditorForm" (ngSubmit)="onSubmit(TeamEditorForm.getRawValue())" >
+            <div class="form-body">
+
+                <div class="form-group pull-right">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" formControlName="Activa">
+                        <label class="form-check-label">Ativa</label>
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label>Equipa</label>
+                    <div class="input-group">
+                        <input class="text" class="form-control cod-label" placeholder="Código" formControlName="Codigo">
+                        <input type="text" class="form-control" placeholder="Descrição" formControlName="Descricao">
+                    </div>
+                    <div *ngIf="teamEditorControls.Codigo.errors" class="invalid-feedback">
+                        <div *ngIf="teamEditorControls.Codigo.errors.required">Código necessário.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email | Departamento Financeiro</label>
+                    <div class="position-relative has-icon-left">
+                        <input type="email"  class="form-control"  formControlName="Email">
+                        <div class="form-control-position"><i class="la la-envelope"></i></div>
+                    </div>
+                    <div *ngIf="teamEditorControls.Email.errors" class="invalid-feedback">
+                        <div *ngIf="teamEditorControls.Email.errors.required">Email necessário.</div>
+                    </div>
+                </div>
+                 
+                <div class="form-group">
+                    <label>Leaders</label>
+                    <ng-select 
+                    [items] ="Users"
+                    bindLabel = "Nome"
+                    bindValue = "Codigo"
+                    formControlName="Leaders"
+                    [searchable]="true" 
+                    [multiple]="true" 
+                    placeholder="Selecionar o leader(s).">         
+                    </ng-select>
+                    <div *ngIf="teamEditorControls.Leaders.errors" class="invalid-feedback">
+                        <div *ngIf="teamEditorControls.Leaders.errors.required">Leaders necessários.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Membros</label>
+                    <ng-select 
+                    [items] ="Users"
+                    bindLabel = "Nome"
+                    bindValue = "Codigo"
+                    formControlName="Membros"
+                    [searchable]="true"
+                    [multiple]="true"
+                    placeholder="Selecionar os membros."> 
+                    </ng-select>
+                    <div *ngIf="teamEditorControls.Membros.errors" class="invalid-feedback">
+                        <div *ngIf="teamEditorControls.Membros.errors.required">Membros necessários.</div>
+                    </div>
+                </div>
+
+            </div>    
+            <div class="form-actions right">
+                <button type="button" *ngIf="Team" class="btn btn-sm btn-outline-danger mr-1" (click)="deleteEquipa()"><i class="feather ft-x"></i> Apagar </button>
+                <button type="button" *ngIf="!Team" class="btn btn-sm btn-outline-dark mr-1" (click)="resetForm()"><i class="feather ft-x"></i> Cancelar </button>
+                <button type="submit" class="btn btn-sm btn-outline-success"><i class="la la-check"></i> Gravar </button>
+            </div>
+        </form>
+    </div>
+</form>

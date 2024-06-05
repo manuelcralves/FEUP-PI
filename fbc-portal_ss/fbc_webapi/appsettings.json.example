@@ -1,0 +1,43 @@
+﻿{
+    "Serilog": {
+        "MinimumLevel": {
+            "Default": "Verbose",
+            "Override": {
+                "Microsoft": "Warning",
+                "System": "Warning"
+            }
+        },
+        "Using": [ "Serilog.Sinks.Debug", "Serilog.Sinks.File", "Serilog.Exceptions", "Serilog.Settings.Configuration", "Serilog.Expressions" ],
+        "Enrich": [ "FromLogContext", "WithExceptionDetails" ],
+        "WriteTo": [
+            {
+                "Name": "Async",
+                "Args": {
+                    "configure": [
+                        {
+                            "Name": "Debug",
+                            "Args": {
+                                "restrictedToMinimumLevel": "Debug",
+                                "outputTemplate": "---------------------------------------------{NewLine}{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level:u}] {Message:lj}{NewLine}{Exception}{NewLine}Properties: {Properties:j}{NewLine}"
+                            }
+                        },
+                        {
+                            "Name": "File",
+                            "Args": {
+                                "shared": true,
+                                "restrictedToMinimumLevel": "Debug",
+                                "outputTemplate": "---------------------------------------------{NewLine}{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level:u}] {Message:lj} {Exception}{Properties:j}{NewLine}",
+                                "path": "%BASEDIR%\\App_Data\\Logs\\log.txt",
+                                "rollingInterval": "Day",
+                                "retainedFileCountLimit": "31",
+                                "fileSizeLimitBytes": "52428800",
+                                "rollOnFileSizeLimit": true,
+                                "encoding": "System.Text.Encoding::UTF8, mscorlib"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,490 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row mb-1"></div>
+        <div class="content-body">
+            <section class="grid-row-label">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card" *ngIf='approvalMode'>
+                            <div class="card-content">
+                                <div class=" card-body">
+                                    <form [formGroup]="EditorDocumento" (ngSubmit)="ApproveDocument(EditorDocumento.getRawValue())">
+                                        <h4 class="form-section"><i class="feather ft-check-square"></i> Aprovação Documento</h4>
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Utilizador</label>
+                                                    <input type="text" class="form-control"  formControlName="Utilizador"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Data Submissão</label>
+                                                    <div class="input-group">
+                                                        <input class="form-control"  formControlName="Data" ngbDatepicker [minDate]="{year: 2000, month: 1, day: 1}" [maxDate]="{year: 2100, month: 12, day: 31}" #dtpDataDoc="ngbDatepicker" disabled>
+                                                        <div class="input-group-append">
+                                                            <div class="input-group-text" (click)="dtpDataDoc.toggle()">
+                                                                <i class="fa fa-calendar" style="cursor: pointer;"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Motivo Rejeição</label>
+                                                    <textarea rows="5" class="form-control" maxlength="4000"  formControlName="MotivoRejeicao"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <div class="text-right">
+                                                <button type="submit" class="btn btn-outline-success rounded-pill ml-auto"><i class="fa fa-check"></i>  Aprovar</button>
+                                                <button type="button" class="btn btn-outline-danger rounded-pill ml-1" (click)="RejectDocument(EditorDocumento.getRawValue())"><i class="fa fa-close"></i>  Rejeitar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" >
+                        <div class="card bg-c-red" *ngIf="estado === 'R'">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <form [formGroup]="EditorDocumento">
+                                        <h4 class="form-section"><i class="feather ft-check-square"></i> Motivo Rejeição</h4>
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Aprovador</label>
+                                                    <input type="text" class="form-control"  formControlName="Aprovador"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Data Rejeição</label>
+                                                    <div class="input-group">
+                                                        <input class="form-control"  formControlName="DataAprovacao" ngbDatepicker [minDate]="{year: 2000, month: 1, day: 1}" [maxDate]="{year: 2100, month: 12, day: 31}" #dtpDataDoc="ngbDatepicker">
+                                                        <div class="input-group-append">
+                                                            <div class="input-group-text" (click)="dtpDataDoc.toggle()">
+                                                                <i class="fa fa-calendar" style="cursor: pointer;"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Motivo Rejeição</label>
+                                                    <textarea rows="5" class="form-control" maxlength="4000"  formControlName="MotivoRejeicao"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card" *blockUI="'formOrder'; message: 'A carregar...'">
+                            <div class="card-content">
+                                <div class=" card-body">
+                                    <form [formGroup]="EditorDocumento" (ngSubmit)="onSubmit(EditorDocumento.getRawValue())">
+                                        <div class="form-body">
+
+                                            <div class="float-right mt-1" *ngIf="sketch">
+                                                <span class="badge badge-pill badge-success" *ngIf="sketch.Estado === 'A'">Aprovado</span>
+                                                <span class="badge badge-pill badge-danger" *ngIf="sketch.Estado === 'R'">Rejeitado</span>
+                                                <span class="badge badge-pill badge-light" *ngIf="sketch.Estado === 'E'">Em Aprovação</span>
+                                            </div>
+                                            
+                                            <h4 class="form-section"><i class="feather ft-align-justify"></i> Encomenda</h4>
+
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Documento</label>
+                                                        <div class="input-group">
+                                                            <select class="form-control" formControlName="TipoDoc" required (change)="verificarAlteracaoTipoDoc()">
+                                                                <option></option>
+                                                                <option [value]="tipoDocumento.Codigo" *ngFor="let tipoDocumento of tiposDocumento">{{tipoDocumento.Codigo}} - {{tipoDocumento.Descricao}}</option>
+                                                            </select>
+                                                            <div *ngIf="documentoControls.TipoDoc.errors" class="invalid-feedback">
+                                                                <div *ngIf="documentoControls.TipoDoc.errors.required">Deve preencher o Tipo de Documento.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Série</label>
+                                                        <select class="form-control" formControlName="Serie" required>
+                                                            <option [value]="serie.Codigo" *ngFor="let serie of series">{{serie.Codigo}} - {{serie.Descricao}}</option>
+                                                        </select>
+                                                        <div *ngIf="documentoControls.Serie.errors" class="invalid-feedback">
+                                                            <div *ngIf="documentoControls.Serie.errors.required">Deve preencher a Serie.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Número</label>
+                                                        <input type="number" class="form-control" formControlName="NumDoc" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2" *ngIf="documentoControls.Estado.value == 'S'">
+                                                    <div class="form-group">
+                                                        <label>Número Novo</label>
+                                                        <input type="number" class="form-control" formControlName="NumDocNovo" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Data do Documento</label>
+                                                        <div class="input-group">
+                                                            <input class="form-control" formControlName="Data" ngbDatepicker [minDate]="{year: 2000, month: 1, day: 1}" [maxDate]="{year: 2100, month: 12, day: 31}" #dtpDataDoc="ngbDatepicker">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text" (click)="dtpDataDoc.toggle()">
+                                                                    <i class="fa fa-calendar" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div *ngIf="documentoControls.Data.errors" class="invalid-feedback">
+                                                                <div *ngIf="documentoControls.Data.errors.required">Deve preencher a Data.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Data de Vencimento</label>
+                                                        <div class="input-group">
+                                                            <input class="form-control" formControlName="DataVenc" ngbDatepicker [minDate]="{year: 2000, month: 1, day: 1}" [maxDate]="{year: 2100, month: 12, day: 31}" #dtpDataFim="ngbDatepicker">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text" (click)="dtpDataFim.toggle()">
+                                                                    <i class="fa fa-calendar" style="cursor: pointer;"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div *ngIf="documentoControls.DataVenc.errors" class="invalid-feedback">
+                                                                <div *ngIf="documentoControls.DataVenc.errors.required">Deve preencher de Vencimento.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group ">
+                                                        <label>Fornecedor</label>
+                                                        <div class="input-group ">
+                                                            <input class="text" class="form-control cod-label" formControlName="Fornecedor" (change)="loadFornecedorInfo($event.target.value)">
+                                                            <input type="text" class="form-control" formControlName="NomeFornecedor">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-success" type="button" (click)="LstFornecedores()" [disabled]="formDesativado"><i class="fa fa-search"></i></button>
+                                                            </div>
+                                                            <div *ngIf="documentoControls.Fornecedor.errors" class="invalid-feedback">
+                                                                <div *ngIf="documentoControls.Fornecedor.errors.required">Deve preencher o Fornecedor.</div>
+                                                                <div *ngIf="documentoControls.Fornecedor.errors.maxlength">Fornecedor só pode ter até {{documentoControls.Fornecedor.errors.maxlength.requiredLength}} caracteres.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Desconto de Fornecedor</label>
+                                                        <input type="number" class="form-control" formControlName="DescFornecedor" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group ">
+                                                        <label>Obra</label>
+                                                        <div class="input-group ">
+                                                            <input class="text" class="form-control cod-label" formControlName="Obra" (change)="loadObraInfo($event.target.value)">
+                                                            <input type="text" class="form-control" formControlName="NomeObra">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-success" type="button" (click)="LstObrasModal()" [disabled]="formDesativado" ><i class="fa fa-search"></i></button>
+                                                            </div>
+                                                            <div *ngIf="documentoControls.Obra.errors" class="invalid-feedback">
+                                                                <div *ngIf="documentoControls.Obra.errors.maxlength">Vendedor só pode ter até {{documentoControls.Obra.errors.maxlength.requiredLength}} caracteres.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label>Desconto Financeiro</label>
+                                                        <input type="number" class="form-control" formControlName="DescFinanceiro" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="row" [class.workaround-tabela-1]="workaroundTabela1 === true" [class.workaround-tabela-2]="workaroundTabela2 === true">
+                                            <div class="col-md-12">
+                                                <ul ngbNav #nav1="ngbNav" class="nav-tabs">
+
+                                                    <li [ngbNavItem]="1">
+                                                        <a class="nav-link" ngbNavLink>Geral</a>
+                                                        <ng-template ngbNavContent>
+
+                                                                <ngx-datatable class="mt-1" #tabelaLinhas [rows]="lstLinhas" [columnMode]="'force'" [reorderable]="false" [limit]="15" [footerHeight]="50" rowHeight="64" [summaryRow]="false" [loadingIndicator]="loadingIndicator" [scrollbarH]="true" [messages]="{ emptyMessage: 'Sem dados a mostrar', totalMessage: 'registos', selectedMessage: 'selecionado' }" [cssClasses]="{sortAscending: 'la la-arrow-up', sortDescending: 'la la-arrow-down', sortUnset: 'la la-arrows-v', pagerLeftArrow: 'datatable-pagina-anterior', pagerRightArrow: 'datatable-pagina-seguinte', pagerPrevious: 'datatable-primeira-pagina', pagerNext: 'datatable-ultima-pagina' }">
+                                                                    <ngx-datatable-row-detail [rowHeight]="'100%'">
+                                                                        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                                                                            <div class="datatable-row-detail-wrapper row">
+                                                                                <div class="datatable-row-detail-field col-sm-6 col-md-4 col-xl-3">
+                                                                                    <div class="field-label">Preço venda</div>
+                                                                                    <div class="field-value">{{ row.Preco | currency:'EUR':'symbol-narrow':'1.2-4' }}</div>
+                                                                                </div>
+                                                                                <div class="datatable-row-detail-field col-sm-6 col-md-4 col-xl-3">
+                                                                                    <div class="field-label">Total</div>
+                                                                                    <div class="field-value">{{ row.Quantidade * row.Preco | currency:'EUR':'symbol-narrow':'1.2-4' }}</div>
+                                                                                </div>
+                                                                                <div class="datatable-row-detail-field col-sm-6 col-md-4 col-xl-3">
+                                                                                    <div class="field-label">Observações</div>
+                                                                                    <div class="field-value">{{ row.Observacoes }}</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-row-detail>
+
+                                                                    <ngx-datatable-column [maxWidth]="190" [resizeable]="false" [sortable]="false">
+                                                                        <ng-template let-column="column" ngx-datatable-header-template>
+                                                                            <button type="button" class="btn btn-sm btn-outline-success rounded-pill " (click)="MostrarLinhaModal()" [disabled]="formDesativado"><i class="feather ft-plus"></i> Adicionar Artigo</button>
+                                                                        </ng-template>
+                                                                        <ng-template let-row="row" ngx-datatable-cell-template>
+                                                                            <div class="btn-group" role="group">
+                                                                                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill mr-1" (click)="editLinha(row)"><i class="feather ft-edit-2"></i> Editar</button>
+                                                                                <button type="button" class="btn btn-sm btn-outline-danger rounded-pill " (click)="deleteLinha(row)" [disabled]="formDesativado"><i class="feather ft-trash-2"></i> Apagar</button>
+                                                                            </div>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+    
+                                                                    <ngx-datatable-column name="Artigo" [width]="150" [maxWidth]="150" [sortable]="false" prop="Artigo"></ngx-datatable-column>
+                                                                    <ngx-datatable-column name="Descrição" [width]="300" [maxWidth]="400"[sortable]="false" prop="Descricao"></ngx-datatable-column>                                                                 
+                                                                    <ngx-datatable-column name="Unidade" [width]="12" [maxWidth]="200" [sortable]="false" prop="Unidade" ></ngx-datatable-column>                                                                  
+                                                                    <ngx-datatable-column name="Quantidade" [width]="120" [maxWidth]="200" [sortable]="false" prop="Quantidade">
+                                                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                                                            <span [title]="value | number:'1.2-4'">{{value | number:'1.2-4'}}</span>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+                                                                    <ngx-datatable-column name="Preço venda" [width]="120" [maxWidth]="200" [sortable]="false" prop="Preco">
+                                                                        <ng-template let-value="value" ngx-datatable-cell-template>
+                                                                            <span [title]="value | currency:'EUR':'symbol-narrow':'1.2-4'">{{value | currency:'EUR':'symbol-narrow':'1.2-4'}}</span>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+                                                                    <ngx-datatable-column name="Total" [width]="100" [maxWidth]="120" [sortable]="false">
+                                                                        <ng-template let-row="row" ngx-datatable-cell-template>
+                                                                            <span [title]="row.Quantidade * row.Preco | currency:'EUR':'symbol-narrow':'1.2-4'">{{row.Quantidade * row.Preco | currency:'EUR':'symbol-narrow':'1.2-4'}}</span>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+                                                                    <ngx-datatable-column [width]="40" [resizeable]="false" [sortable]="false" [draggable]="false" [canAutoResize]="false">
+                                                                        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                                                                            <a href="javascript:void(0)" class="la" [class.la-angle-right]="!expanded" [class.la-angle-down]="expanded" title="Expandir/Recolher Linha" (click)="expandirRecolherLinha(row)"></a>
+                                                                        </ng-template>
+                                                                    </ngx-datatable-column>
+                                                                </ngx-datatable>
+                                                        </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="2">
+                                                        <a class="nav-link" ngbNavLink>Anexos</a>
+                                                        <ng-template ngbNavContent>
+                                                            <div class="form-group col-12 mb-2 mt-1 file-repeater">
+                                                                <ngx-dropzone [expandable]="true" (change)="onFileSelect($event)" style="min-height: 192px;" [disabled]="formDesativado">
+                                                                    <ngx-dropzone-label *ngIf="dropZoneFiles.length == 0">Arraste ficheiros para enviar (ou clique aqui)</ngx-dropzone-label>
+                                                                    <app-dropzone-custom-file-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let file of dropZoneFiles" [file]="file" [labelText]="file.name" [removable]="true" (removed)="onFileRemove(file)">
+                                                                    </app-dropzone-custom-file-preview>
+                                                                </ngx-dropzone>
+    
+                                                                <div class="row">
+                                                                    <div class="col-12" style="margin-left: 2px;">
+                                                                        <div class="file-box" *ngFor="let anexo of lstAnexos">
+                                                                            <div class="file">
+                                                                                <span class="corner"></span>
+                                                                                <a href="javascript:void(0)" [title]="anexo.FicheiroOrig + fileSize(anexo)" (click)="downloadAnexo(anexo)">
+                                                                                    <div class="icone-apagar-ficheiro" title="Remover">
+                                                                                        <span class="la la-trash" (click)="removerAnexo($event, anexo)"></span>
+                                                                                    </div>
+                                                                                    <div class="icon">
+                                                                                        <i class="la la-file-text"></i>
+                                                                                    </div>
+                                                                                    <div class="file-name">
+                                                                                        <span>{{anexo.FicheiroOrig}}{{fileSize(anexo)}}</span>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </li>
+                                            </ul>
+                                            <div [ngbNavOutlet]="nav1"></div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="text-right">
+                                            <button type="reset" class="btn btn-outline-secondary rounded-pill mr-1" [routerLink]="[mainRoute]"><i class="feather ft-corner-up-left"></i> Cancelar</button>
+                                            <button type="button" class="btn btn-outline-danger rounded-pill mr-1" *ngIf="sketchId" (click)="deleteRascunho()" [disabled]="formDesativado"><i class="feather ft-trash-2"></i> Eliminar</button>
+                                            <button type="submit" class="btn btn-outline-success rounded-pill mr-1" [disabled]="formDesativado"><i class="feather ft-save"></i> Gravar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- MostrarLinhaModal -->
+<ng-template class="modal text-left" #LinhaModalContent let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h3 class="modal-title text-600"><i class="feather ft-box"></i> Linha</h3>
+        <button type="button" class="close" aria-label="Fechar" (click)="d('fechar')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="EditorLinha" (ngSubmit)="gravarLinha(EditorLinha.value)">
+        <div class="modal-body">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Artigo</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control cod-label" formControlName="Artigo" maxlength="48" (change)="loadArtigoInfo($event.target.value)">
+                            <input type="text" class="form-control" formControlName="Descricao" maxlength="512">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="button" (click)="LstArtigosModal()" [disabled]="formDesativado"><i class="fa fa-search"></i></button>
+                            </div>
+                            <div *ngIf="linhaControls.Artigo.errors" class="invalid-feedback">
+                                <div *ngIf="linhaControls.Artigo.errors.required">Deve preencher o Artigo.</div>
+                                <div *ngIf="linhaControls.Artigo.errors.maxlength">Artigo só pode ter até {{linhaControls.Artigo.errors.maxlength.requiredLength}} caracteres.</div>
+                            </div>
+                            <div *ngIf="linhaControls.Descricao.errors" class="invalid-feedback">
+                                <div *ngIf="linhaControls.Descricao.errors.maxlength">Descrição só pode ter até {{linhaControls.Descricao.errors.maxlength.requiredLength}} caracteres.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Data de Entrega</label>
+                        <div class="input-group">
+                            <input class="form-control" formControlName="DataEntrega" ngbDatepicker [minDate]="{year: 2000, month: 1, day: 1}" [maxDate]="{year: 2100, month: 12, day: 31}" #dtpDataEntrega="ngbDatepicker">
+                            <div class="input-group-append">
+                                <div class="input-group-text" (click)="dtpDataEntrega.toggle()">
+                                    <i class="fa fa-calendar" style="cursor: pointer;"></i>
+                                </div>
+                            </div>
+                            <div *ngIf="linhaControls.DataEntrega.errors" class="invalid-feedback">
+                                <div *ngIf="linhaControls.DataEntrega.errors.required">Deve preencher a Data de Entrega.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Observações</label>
+                        <textarea rows="5" class="form-control" formControlName="Observacoes" maxlength="4000"></textarea>
+                        <div *ngIf="linhaControls.Observacoes.errors" class="invalid-feedback">
+                            <div *ngIf="linhaControls.Observacoes.errors.maxlength">Observações só pode ter até {{linhaControls.Observacoes.errors.maxlength.requiredLength}} caracteres.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <div class="input-group">
+                            <input type="number" step="0.5" class="form-control text-right " formControlName="Quantidade" inputmode="decimal" />
+                            <div *ngIf="linhaControls.Quantidade.errors" class="invalid-feedback">
+                                <div *ngIf="linhaControls.Quantidade.errors.max">Quantidade deve ser menor ou igual a {{linhaControls.Quantidade.errors.max.max}}.</div>
+                                <div *ngIf="linhaControls.Quantidade.errors.min">Quantidade deve ser maior ou igual a {{linhaControls.Quantidade.errors.min.min}}.</div>
+                                <div *ngIf="linhaControls.Quantidade.errors.required">Deve preencher a Quantidade.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Unidade</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="Unidade" maxlength="12" (change)="loadUnidadeInfo($event.target.value)">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="button" (click)="LstUnidades()" [disabled]="formDesativado"><i class="fa fa-search"></i></button>
+                            </div>
+                            <div *ngIf="linhaControls.Unidade.errors" class="invalid-feedback">
+                                <div *ngIf="linhaControls.Unidade.errors.maxlength">Unidade só pode ter até {{linhaControls.Unidade.errors.maxlength.requiredLength}} caracteres.</div>
+                                <div *ngIf="linhaControls.Unidade.errors.required">Deve preencher a Unidade.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Preço</label>
+                        <div class="input-group">
+                            <input type="number" step="0.5" class="form-control text-right" formControlName="Preco" inputmode="decimal" />
+                            <div *ngIf="linhaControls.Preco.errors" class="invalid-feedback">
+                                <div *ngIf="linhaControls.Preco.errors.max">Preco deve ser menor ou igual a {{linhaControls.Preco.errors.max.max}}.</div>
+                                <div *ngIf="linhaControls.Preco.errors.min">Preco deve ser maior ou igual a {{linhaControls.Preco.errors.min.min}}.</div>
+                                <div *ngIf="linhaControls.Preco.errors.required">Deve preencher o Preço Venda.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Total</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control text-right" [imask]="numericMask" [unmask]="'typed'" formControlName="Total">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-success rounded-pill" data-dismiss="modal" [disabled]="formDesativado"><i class="la la-plus"></i> Adicionar</button>
+        </div>
+    </form>
+</ng-template>
+
+</div>
+</div>

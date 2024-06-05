@@ -1,0 +1,39 @@
+.is-sticky {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 999;
+}
+
+.container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.is-static {
+  width: 100%;
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+}
+
+:host ::ng-deep .navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+}
+
+:host ::ng-deep .navbar-light .navbar-nav .nav-link {
+  color: #6b6f82 !important;
+}
+
+.dropdown-menu .dropdown-submenu>a:after {
+  top: 14px;
+}
+
+.dropdown .dropdown-menu {
+  min-width: 13rem !important;
+}
+
+.navbar-horizontal .dropdown-menu .dropdown-submenu>a:after,
+.navbar-horizontal .dropdown-menu .dropdown-submenu>button:after {
+  right: 0.5rem;
+}

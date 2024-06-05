@@ -1,0 +1,28 @@
+<!--begin::Card-->
+<div mCard #mCard [options]="options" class="card">
+    <div class="card-header" #mCardHeader>
+        <h4 class="card-title" #mCardHeaderTitle>
+            <ng-content select="[mCardHeaderTitle]"></ng-content>
+        </h4>
+        <a class="heading-elements-toggle" (click)="toggleMobileMenu()"><i class="la la-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements" #mCardHeaderTools>
+            <ng-content select="[mCardHeaderTools]"></ng-content>
+            <ul class="list-inline mb-0">
+                <li *ngIf="options && options.minimize"><a data-action="collapse"><i class="feather ft-minus" (click)="toggleCollpase($event)"></i></a></li>
+                <li *ngIf="options && options.reload"><a data-action="reload"><i class="feather ft-rotate-cw" (click)="reload()"></i></a></li>
+                <li *ngIf="options && options.expand"><a data-action="expand"><i class="feather ft-maximize" (click)="toggleExpand($event)"></i></a></li>
+                <li *ngIf="options && options.close"><a data-action="close"><i class="feather ft-x" (click)="close($event)"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-content collpase show" #mCardContent>
+        <ng-content select="[mCardContent]"></ng-content>
+        <div class="card-body" #mCardBody>
+            <ng-content select="[mCardBody]"></ng-content>
+        </div>
+    </div>
+    <div class="card-footer" #mCardFooter>
+        <ng-content select="[mCardFooter]"></ng-content>
+    </div>
+</div>

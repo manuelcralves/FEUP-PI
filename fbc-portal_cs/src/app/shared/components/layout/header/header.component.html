@@ -1,0 +1,7 @@
+<ng-container *ngIf="layout === 'vertical'">
+  <app-header-vertical></app-header-vertical>
+</ng-container>
+
+<ng-container *ngIf="layout === 'horizontal'" (window:resize)="onResize($event)">
+  <app-header-horizontal></app-header-horizontal>
+</ng-container>

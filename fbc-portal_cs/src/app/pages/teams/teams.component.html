@@ -1,0 +1,158 @@
+<div class="app-content content">
+    <div class="content-wrapper">   
+       <div class="content-detached content-right">
+            <div class="content-body">
+                <section class="row">
+                  <div class="col-12">
+
+                    <div class="card">
+                        <div class="card-content">
+                          <div class="card-body cleartfix">
+                            <div class="media align-items-stretch">
+                              <div class="align-self-center">
+                                <i class="icon-user dark font-large-2 mr-2"></i>
+                              </div>
+                              <div class="media-body">
+                                <h2>Equipa</h2>
+                                <span *ngIf="selectedTeam">{{selectedTeam.Descricao}}</span>
+                              </div>
+                              <div class="align-self-center"  *ngIf="selectedTeam">
+                                <button class="btn btn-sm btn-outline-success rounded-pill" (click)="addTeamUserModal()"><i class="la la-user-plus"></i> Adicionar Membro</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                              <h5 *ngIf="!selectedLeaders"><i class="la la-hourglass-2"></i> Não existem dados...</h5>
+
+                              <section *ngIf="">
+                                <h4>Leaders</h4>
+                                <ngx-datatable class="bootstrap row contacts-table" [rows]="selectedLeaders" [columnMode]="'force'" [reorderable]="false" [sortType]="multi" [limit]="8" [footerHeight]="50" rowHeight="50" [summaryRow]="false" [summaryPosition]="'bottom'" [loadingIndicator]="loadingIndicator" [scrollbarH]="true" [messages]="{ emptyMessage: 'Sem dados a mostrar', totalMessage: 'registos', selectedMessage: 'selecionado' }" [cssClasses]="{ pagerLeftArrow: 'datatable-pagina-anterior', pagerRightArrow: 'datatable-pagina-seguinte', pagerPrevious: 'datatable-primeira-pagina', pagerNext: 'datatable-ultima-pagina' }" >
+                                  <ngx-datatable-column name="Utilizador" [maxWidth]="140" prop="Utilizador"></ngx-datatable-column>
+                                  <ngx-datatable-column name="Nome"  [maxWidth]="140" prop="Utilizador"></ngx-datatable-column>
+                                  </ngx-datatable>
+                                <br>
+                                <h4>Membros</h4>
+                                <ngx-datatable class="bootstrap row contacts-table" [rows]="selectedMembros" [columnMode]="'force'" [reorderable]="false" [sortType]="multi" [limit]="8" [footerHeight]="50" rowHeight="50" [summaryRow]="false" [summaryPosition]="'bottom'" [loadingIndicator]="loadingIndicator" [scrollbarH]="true" [messages]="{ emptyMessage: 'Sem dados a mostrar', totalMessage: 'registos', selectedMessage: 'selecionado' }" [cssClasses]="{ pagerLeftArrow: 'datatable-pagina-anterior', pagerRightArrow: 'datatable-pagina-seguinte', pagerPrevious: 'datatable-primeira-pagina', pagerNext: 'datatable-ultima-pagina' }" >
+                                <ngx-datatable-column name="Utilizador" [maxWidth]="140" prop="Utilizador"></ngx-datatable-column>
+                                <ngx-datatable-column name="Nome"  [maxWidth]="140" prop="Utilizador"></ngx-datatable-column>
+                                <ngx-datatable-column [minWidth]="30" [maxWidth]="140">
+                                    <ng-template ngx-datatable-cell-template let-row="row"> 
+                                      <a class="btn btn-social-icon mr-1"><span class="la la-edit" (click)="editMember(membro.Utilizador)"></span></a>
+                                      <a class="btn btn-social-icon" ><span class="la la-trash" (click)="deleteMember(membro.Utilizador)" ></span></a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                </ngx-datatable>
+                              </section>
+
+                              <section>
+                                <section *ngIf="selectedLeaders">
+
+                                  <h5 class="text-center">Leader</h5>
+                                  <div class="row mt-2 justify-content-center">
+                                    <div class="col-xl-2 col-md-6 col-12" *ngFor="let membro of selectedLeaders">
+                                      <div class="card border-dark border-lighten-5">
+                                        <div class="text-center">
+                                          <div class="card-body">
+                                            <div class="card-content mb-1">
+                                              <img src="../../../assets/images/portrait/small/default.png" class="rounded-circle  height-100" alt="Card image">
+                                            </div>
+                                            <span class="badge badge-pill badge-dark mb-1">Leader</span>
+                                            <h4  *ngIf="membro?.Nome" class="card-title user-name text-bold-700">{{membro.Nome}}</h4> 
+                                            <h4  *ngIf="!membro?.Nome" class="card-title user-name text-bold-700">Nome</h4>
+                                            <h6 *ngIf="membro?.Utilizador" class="card-subtitle text-muted">{{membro.Utilizador}}</h6>
+                                            <h6 *ngIf="!membro?.Utilizador" class="card-subtitle text-muted">Utilizador</h6>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </section>                 
+                                <section *ngIf="selectedMembros"> 
+                                  <h4 class="text-center">Membros</h4>
+                                  <div class="row mt-2 justify-content-center">
+                                    <div class="col-xl-2 col-md-6 col-12" *ngFor="let membro of selectedMembros let i = index">
+                                      <div class="card border-teal border-lighten-2">
+                                        <div class="text-center">
+                                          <div class="card-body">
+                                            <div class="card-content mb-1">
+                                              <img src="../../../assets/images/portrait/small/default.png" class="rounded-circle  height-100" alt="Card image">
+                                            </div>
+                                            <span class="badge badge-pill badge-warning mb-1">Membro</span>
+                                            <h4  *ngIf="membro?.Nome" class="card-title user-name text-bold-700">{{membro.Nome}}</h4> 
+                                            <h4  *ngIf="!membro?.Nome" class="card-title user-name text-bold-700">Nome</h4>
+                                            <h6 *ngIf="membro?.Utilizador" class="card-subtitle text-muted">{{membro.Utilizador}}</h6>
+                                            <h6 *ngIf="!membro?.Utilizador" class="card-subtitle text-muted">Utilizador</h6>
+                                          </div>
+                                          <div class="text-center">
+                                           <!-- <a class="btn btn-social-icon mr-1 mb-1"><span class="la la-edit" (click)="editMember(membro.Utilizador)"></span></a>-->
+                                            <a class="btn btn-social-icon mb-1" ><span class="la la-trash" (click)="deleteMember(membro.Utilizador)" ></span></a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </section>
+                              </section>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="sidebar-detached sidebar-left" id="sidebar-left" fxFlex="auto" [perfectScrollbar]="config">
+            <div class="sidebar">
+              <div class="bug-list-sidebar-content">
+
+                <!-- Predefined Views -->
+                <div class="card">
+                  <div class="card-head">
+                    <div class="media p-1">
+                      <div class="media-left pr-1"><span class="avatar avatar-sm avatar-online rounded-circle"><img
+                            src="../../../assets/images/portrait/small/default.png" alt="avatar"><i
+                            class="icon"></i></span></div>
+                      <div class="media-body media-middle">
+                        <h4 class="media-heading">{{currentUser?.Nome}}</h4>
+                      </div>
+                    </div>
+                  </div>
+         
+                  <!-- Groups-->
+                  <div class="card-body">
+                    <p class="lead">As tuas Equipas</p>
+                    <h6 *ngIf="!Teams">Não existem equipas...</h6>
+
+                    <div class="list-group" *ngIf="Teams">                    
+                        <div class="list-group-item list-group-item-action" *ngFor="let Team of Teams">                      
+                            <i class="la la-users"></i><a (click)="selectTeam(Team.Codigo)"> {{ Team.Descricao}}</a>
+                        </div>
+                    </div>
+                  </div>
+                  
+                  <!--/ Groups-->
+
+                  <div class="card-body" *ngIf="Admin">
+                    <p class="lead">Opções</p>
+                    <div class="list-group">                    
+                        <div class="list-group-item list-group-item-action">         
+                            <i class="la la-plus"></i><a (click)="newTeam()"> Criar Equipa</a>
+                        </div>
+                    </div>
+                    <div class="list-group" *ngIf="selectedTeam">                    
+                        <div class="list-group-item list-group-item-action">         
+                            <i class="la la-edit"></i><a (click)="editTeam()"> Editar Equipa</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

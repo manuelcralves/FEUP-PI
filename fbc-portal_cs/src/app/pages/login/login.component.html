@@ -1,0 +1,56 @@
+﻿<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-header row mb-1">
+    </div>
+    <div class="content-body"><section class="flexbox-container">
+<div class="col-12 d-flex align-items-center justify-content-center">
+    <div class="col-md-4 col-10 box-shadow-2 p-0">
+        <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+            <div class="card-header border-0">
+
+                <div class="card-title text-center">
+                    <img style="width: 35%;" src="assets/images/logo/logo-fbc.png" alt="Floresta Logo">
+                </div>
+              
+            </div>
+            <div class="card-content">
+                <p class="card-subtitle line-on-side text-muted text-center font-small-3 mx-2 my-1"><span>Iniciar Sessão</span></p>
+                <div class="card-body">
+                    <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="tryLogin()">
+                        <fieldset class="form-group position-relative has-icon-left" [disabled]="sendingRequest">
+                            <input type="text" placeholder="Utilizador" formControlName="Username" autocomplete="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginControls.Username.errors }" required>
+                            <div class="form-control-position">
+                                <i class="feather ft-user"></i>
+                            </div>
+                            <div *ngIf="submitted && loginControls.Username.errors" class="invalid-feedback">
+                                <div *ngIf="loginControls.Username.errors.required">Utilizador necessário.</div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group position-relative has-icon-left" [disabled]="sendingRequest">
+                            <input type="password" placeholder="Password" formControlName="Password" autocomplete="current-password" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginControls.Password.errors }" #passwordInput />
+                            <div class="form-control-position">
+                                <i class="la la-key"></i>
+                            </div>
+                            <div *ngIf="submitted && loginControls.Password.errors" class="invalid-feedback">
+                                <div *ngIf="loginControls.Password.errors.required">Password necessária.</div>
+                            </div>
+                        </fieldset>
+                        <div *ngIf="submitted && errorText" class="invalid-feedback d-block mb-1">
+                            <div class="bigger-text-1">{{errorText}}</div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-success btn-block" [disabled]="sendingRequest">
+                            <i class="fa fa-refresh fa-spin" *ngIf="sendingRequest"></i>
+                            <i class="feather ft-unlock" *ngIf="!sendingRequest"></i> Login
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+    </div>
+  </div>
+</div>

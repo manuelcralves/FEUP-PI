@@ -1,0 +1,41 @@
+<div id="sticky-wrapper" class="sticky-wrapper">
+  <div
+    class="menu-header header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-dark navbar-without-dd-arrow navbar-shadow"
+    role="navigation" data-menu="menu-wrapper" (scroll)="onWindowScroll($event);" id="menu-header">
+    <div class="navbar-container main-menu-content" data-menu="menu-container">
+      <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+        <li *ngFor="let child of _menuSettingsConfig.horizontal_menu.items" class="nav-item" [ngClass]="{
+          'dropdown nav-item ':(child.title && child.submenu),
+          'nav-item' : true,
+          'open': child.isOpen,
+        'active': child.isSelected }" [attr.data-menu]="child.submenu? 'dropdown' : ''"
+          (mouseenter)="mouseEnter($event)" (mouseleave)="mouseLeave($event)">
+          <!-- Top Menu -->
+          <a class="nav-link " [ngClass]="{'dropdown-item dropdown-toggle active': child.submenu}"
+            [attr.data-toggle]="child.submenu? 'dropdown' : ''" (click)="toggleMenu($event, child)"
+            routerLink="{{child.page != 'null'?child.page:router.url}}" *ngIf="!child.isExternalLink">
+            <i class="la" [ngClass]="child.icon"></i><span data-i18n="nav.dash.main">{{child.title}}</span>
+          </a>
+          <a class="nav-link " [ngClass]="{'dropdown-item dropdown-toggle active': child.submenu}"
+            [attr.data-toggle]="child.submenu? 'dropdown' : ''" (click)="toggleMenu($event, child)" [href]="child.page"
+            target="_blank" *ngIf="!child.section && child.isExternalLink">
+            <i class="la" [ngClass]="child.icon"></i><span data-i18n="nav.dash.main">{{child.title}}</span>
+          </a>
+
+          <ul class="dropdown-menu" *ngIf="child.submenu">
+            <li *ngFor="let subchild of child.submenu.items" class=""
+              [ngClass]="{'dropdown dropdown-submenu':(subchild.submenu), 'dropdown-divider':(subchild.title =='horizontal-divider'), 'active': subchild.isSelected }"
+              (mouseenter)="mouseEnter($event)" (mouseleave)="mouseLeave($event)"
+              [attr.data-menu]="subchild.submenu? 'dropdown-submenu' : ''">
+              <a class="dropdown-item" (click)="toggleMenu($event, subchild)"
+                routerLink="{{subchild.page != 'null'?subchild.page:router.url}}" data-toggle="dropdown"
+                *ngIf="!subchild.isExternalLink">
+                <i class="la" [ngClass]="subchild.icon"></i> <span data-i18n="nav.dash.main">{{subchild.title}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

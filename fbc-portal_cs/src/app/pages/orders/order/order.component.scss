@@ -1,0 +1,116 @@
+
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+.mat-tab-group {
+    margin-bottom: 48px;
+}
+
+.workaround-tabela-1 {
+    padding-right: 2px;
+}
+
+.workaround-tabela-2 {
+    padding-right: 1px;
+}
+
+.file {
+    border: 1px solid #e7eaec;
+    padding: 0;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.file .icon {
+    height: 8em;
+    overflow: hidden;
+    padding: 1.1em 0.8em;
+    text-align: center;
+}
+
+.file .icon i {
+    font-size: 6em;
+    color: #dadada;
+}
+
+.file .file-name {
+    padding: 0.7em;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e7eaec;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 5.5em;
+}
+
+.file-name small {
+    color: #676a6c;
+}
+
+.corner {
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 0.6em solid transparent;
+    border-right: 0.6em solid #f1f1f1;
+    border-bottom: 0.6em solid #f1f1f1;
+    right: 0em;
+    bottom: 0em;
+}
+
+.file-box {
+    float: left;
+    width: 16em;
+    margin: 10px;
+}
+
+.file .file-name span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 3em;
+    margin-top: -0.6em;
+}
+
+.icone-apagar-ficheiro {
+    color: #f53838;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 0.2em;
+}
+
+.icone-apagar-ficheiro:hover {
+    color: #fc9191;
+}
+
+.icone-apagar-ficheiro .la.la-trash {
+    font-size: 2em;
+}
+
+.grid-input {
+    background: transparent;
+    border: none;
+    outline:none;
+    box-shadow:none;
+}
+
+.currency-input {
+    width: 80%;
+  }
+  
+  .cod-label {
+    max-width:8em;
+}
+
+::ng-deep .regras-grid-button{
+    margin-top: 6px;
+}
+
+.bg-c-red {
+    background: linear-gradient(45deg,#ff220025,#ffffff);
+}
+
+

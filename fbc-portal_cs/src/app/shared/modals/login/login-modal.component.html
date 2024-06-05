@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h3 class="modal-title"><i class="feather ft-unlock"></i> Login</h3>
+    <button type="button" class="close" aria-label="Fechar" (click)="modal.dismiss('fechar')">
+        <span aria-hidden=" true">&times;</span>
+    </button>
+</div>
+<form>
+    <div class="modal-body">
+        <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="tryLogin()">
+            <fieldset class="form-group position-relative has-icon-left" [disabled]="sendingRequest">
+                <input type="text" placeholder="Utilizador" formControlName="Username" autocomplete="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginControls.Username.errors }" required>
+                <div class="form-control-position">
+                    <i class="feather ft-user"></i>
+                </div>
+                <div *ngIf="submitted && loginControls.Username.errors" class="invalid-feedback">
+                    <div *ngIf="loginControls.Username.errors.required">Utilizador necessário.</div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group position-relative has-icon-left" [disabled]="sendingRequest">
+                <input type="password" placeholder="Password" formControlName="Password" autocomplete="current-password" class="form-control" [ngClass]="{ 'is-invalid': submitted && loginControls.Password.errors }" #passwordInput />
+                <div class="form-control-position">
+                    <i class="la la-key"></i>
+                </div>
+                <div *ngIf="submitted && loginControls.Password.errors" class="invalid-feedback">
+                    <div *ngIf="loginControls.Password.errors.required">Password necessária.</div>
+                </div>
+            </fieldset>
+            <div *ngIf="submitted && errorText" class="invalid-feedback d-block mb-1">
+                <div class="bigger-text-1">{{errorText}}</div>
+            </div>
+            <button type="submit" class="btn btn-outline-success btn-block" ngbAutofocus [disabled]="sendingRequest">
+                <i class="fa fa-refresh fa-spin" *ngIf="sendingRequest"></i>
+                <i class="feather ft-unlock" *ngIf="!sendingRequest"></i> Login
+            </button>
+        </form>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h3 class="modal-title"><i class="feather ft-list"></i> Fornecedores</h3>
+    <button type="button" class="close" aria-label="Fechar" (click)="modal.dismiss('fechar')">
+        <span aria-hidden=" true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="input-group mt-1">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-success border-success white"><i class="la la-search"></i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Pesquisar" ngbAutofocus [(ngModel)]="pesquisa">
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-fornecedor">Fornecedor</th>
+                    <th scope="col" class="col-nome">Nome</th>
+                    <th scope="col" class="col-buttons"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fornecedor of fornecedoresFiltrados() | slice: (page - 1) * pageSize : page * pageSize">
+                    <td>{{fornecedor.Codigo}}</td>
+                    <td>{{fornecedor.Nome}}</td>
+                    <td><button type="button" class="btn btn-sm btn-outline-success" aria-label="Selecionar" (click)="modal.close(fornecedor)"><i class="feather ft-plus"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center" [pageSize]="pageSize" [collectionSize]="fornecedoresFiltrados()?.length ?? 0" [(page)]="page" [boundaryLinks]="true" [maxSize]="5" [rotate]="true"></ngb-pagination>
+</div>

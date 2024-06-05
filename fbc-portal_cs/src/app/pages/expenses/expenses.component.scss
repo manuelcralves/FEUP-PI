@@ -1,0 +1,28 @@
+/* not active */
+.nav-pills .nav-link:not(.active) {
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    font-weight: normal;
+}
+
+/* active*/
+.nav-pills .nav-link {
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(0, 164, 96);
+    font-weight: bold;
+    font-size: medium;
+    margin-left: -10px;
+}
+
+.col_approved {
+    color: green !important;
+}
+
+.col_rejected {
+    color: red !important;
+}
+
+.col_pending {
+    color: gray !important;
+}
+

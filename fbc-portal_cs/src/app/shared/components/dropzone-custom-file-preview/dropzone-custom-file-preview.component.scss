@@ -1,0 +1,103 @@
+:host {
+    /*
+    min-width: unset !important;
+    max-width: unset !important;
+    */
+    padding: 0 !important;
+    height: unset !important;
+    min-width: unset !important;
+    max-width: unset !important;
+    width: 16em;
+    font-size: 14px;
+
+    &:hover,
+    &:focus {
+        outline: 0;
+
+        ngx-dropzone-remove-badge {
+            opacity: 1;
+            background: #ff1635;
+
+            &:hover {
+                background: #ff304b;
+            }
+        }
+    }
+
+    ngx-dropzone-remove-badge {
+        opacity: 0;
+    }
+
+    .file-box {
+        width: 100%;
+    }
+
+    .file {
+        border: 1px solid #e7eaec;
+        padding: 0;
+        background-color: #ffffff;
+        position: relative;
+    }
+
+    .corner {
+        position: absolute;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        line-height: 0;
+        border: 0.6em solid transparent;
+        border-right: 0.6em solid #f1f1f1;
+        border-bottom: 0.6em solid #f1f1f1;
+        right: 0em;
+        bottom: 0em;
+    }
+
+    .file .icon {
+        height: 8em;
+        overflow: hidden;
+        padding: 1.1em 0.8em;
+        text-align: center;
+    }
+
+    .file .icon i {
+        font-size: 6em;
+        color: #dadada;
+    }
+
+    .file .file-name {
+        padding: 0.7em;
+        background-color: #f8f8f8;
+        border-top: 1px solid #e7eaec;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-height: 5.5em;
+    }
+
+    .file .file-name span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        height: 3em;
+        margin-top: -0.6em;
+        margin-bottom: 0;
+        text-align: unset;
+    }
+
+    .icone-apagar-ficheiro {
+        color: #f53838;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 0.2em;
+    }
+
+    .icone-apagar-ficheiro:hover {
+        color: #fc9191;
+    }
+
+    .icone-apagar-ficheiro .la.la-trash {
+        font-size: 2em;
+    }
+}

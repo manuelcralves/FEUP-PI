@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\home",
+    "\\src\\assets",
+    "\\src\\assets\\sass",
+    "\\src\\assets\\sass\\scss",
+    "\\src\\environments"
+  ],
+  "PreviewInSolutionExplorer": false
+}

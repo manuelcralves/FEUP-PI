@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="fbc_webapi.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Primavera_Instancia" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DEFAULT</Value>
+    </Setting>
+    <Setting Name="Primavera_Plataforma" Type="fbc_webapi.Primavera.EnumTipoPlataformaConfig" Scope="Application">
+      <Value Profile="(Default)">Empresarial</Value>
+    </Setting>
+    <Setting Name="Primavera_Apl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ERP</Value>
+    </Setting>
+    <Setting Name="Primavera_Versao" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10.00</Value>
+    </Setting>
+    <Setting Name="ClientIdAutenticacao" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">86a0127fc7e84110b879d0d76f179e98</Value>
+    </Setting>
+    <Setting Name="Primavera_Empresa" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TESTES</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

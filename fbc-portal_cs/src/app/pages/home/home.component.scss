@@ -1,0 +1,79 @@
+
+h1 {
+    font-size: 7rem;
+}
+
+img{
+    padding: 3%;
+}
+
+.text-landing{
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 30%;
+	bottom: 0;
+	margin: auto;
+}
+
+.landing-page {
+	height: 700px;
+	background-image: url("../../../assets/images/backgrounds/fbc_bg01.jpg");
+	background-size: cover;
+	opacity: 0.9;
+}
+
+.time{
+	font-size: 7.5rem;
+}
+
+.name{
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.greeting {
+	margin-top: 3%;
+	font-size: 1.5rem;
+}
+
+@media (min-width: 576px) {
+	 h1 {
+		font-size: 5.5rem;
+	}
+	.display-5 {
+		font-size: 0.8rem;
+	}
+	.greeting {
+		font-size: 1.8rem;
+	}
+	.time{
+		font-size: 9.5rem;
+	}
+	.name{
+		font-size: 2.5rem;
+	}
+}
+@media (min-width: 692px) {
+	h1 {
+		font-size: 6rem;
+	}
+	.greeting {
+		font-size: 2rem;
+	}
+	.time{
+		font-size: 10.5rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	h1 {
+		font-size: 10.5rem;
+	}
+	.greeting {
+		font-size: 2rem;
+	}
+	.time{
+		font-size: 13.5rem;
+	}
+}

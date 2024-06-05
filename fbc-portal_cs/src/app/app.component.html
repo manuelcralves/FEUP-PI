@@ -1,0 +1,7 @@
+﻿<block-ui>
+    <ngx-loading-bar ref="router" [includeSpinner]='false' height='3px' color="#00942a"></ngx-loading-bar>
+
+    <app-alert></app-alert>
+
+    <router-outlet *ngIf="showContent"></router-outlet>
+</block-ui>

@@ -1,0 +1,113 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row mb-1">
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card" *blockUI="'expensesTable'; message: 'A carregar...'">
+                        <div class="card-content">
+                            <div class="table-responsive card-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <h4><i class="feather ft-align-justify"></i> Despesas</h4>
+
+                                            <div class="input-group ">
+                                                <button type="button" class="btn btn-sm btn-outline-success ml-auto rounded-pill" (click)="NewExpense()">+ Nova Despesa</button>
+                                            </div>
+
+                                                <ul ngbNav #nav1="ngbNav" class="nav-pills">
+                                                    <li [ngbNavItem]="1">
+                                                        <a class="nav-link" ngbNavLink>Geral</a>
+                                                        <ng-template ngbNavContent>
+
+                                                            <div class="input-group mt-2">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text bg-success border-success white"><i class="la la-search"></i></span>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Pesquisar" (change)="pesquisaDocumentosAlterada($event.target.value)" value='{{pesquisaDocumentos}}'>
+                                                            </div>
+
+                                                            <ngx-datatable class="mt-2" [rows]="documentosFiltrados"  [columnMode]="'force'" [reorderable]="false" [sortType]="multi" [limit]="8" [footerHeight]="50" rowHeight="50" [summaryRow]="false" [summaryPosition]="'bottom'" [loadingIndicator]="loadingIndicator" [scrollbarH]="true" [messages]="{ emptyMessage: 'Sem dados a mostrar', totalMessage: 'registos', selectedMessage: 'selecionado' }" [cssClasses]="{sortAscending: 'la la-arrow-up', sortDescending: 'la la-arrow-down', sortUnset: 'la la-arrows-v', pagerLeftArrow: 'datatable-pagina-anterior', pagerRightArrow: 'datatable-pagina-seguinte', pagerPrevious: 'datatable-primeira-pagina', pagerNext: 'datatable-ultima-pagina' }">
+                                    
+                                                                <ngx-datatable-column name="Data" [width]="150" [maxWidth]="120" [resizeable]="false" prop="DataDoc">
+                                                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                                                        <span [title]="value | date:'dd/MM/yyyy'">{{value | date:'dd/MM/yyyy'}}</span>
+                                                                    </ng-template>
+                                                                </ngx-datatable-column>
+                                                                <ngx-datatable-column name="Documento" [width]="150" [maxWidth]="150" prop="Documento" ></ngx-datatable-column>
+                                                                <ngx-datatable-column name="Obra" [width]="150" [maxWidth]="400" prop="NomeObra" ></ngx-datatable-column>
+                                                                <ngx-datatable-column name="Fornecedor" [width]="250" [maxWidth]="400" prop="NomeEntidade"></ngx-datatable-column>   
+                                                                <ngx-datatable-column name="Estado" [width]="145" [maxWidth]="200" prop="Estado">
+                                                                    <ng-template let-value="value"  ngx-datatable-cell-template>
+                                                                        <span [title]="value | estadoDocInterno">{{value | estadoDocInterno}}</span>
+                                                                    </ng-template>
+                                                                </ngx-datatable-column>
+                                                                <ngx-datatable-column name="Total" [width]="200"  prop="TotalDocumento">
+                                                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                                                        <span [title]="value | currency:'EUR':'symbol-narrow':'1.2-4'">{{value | currency:'EUR':'symbol-narrow':'1.2-4'}}</span>
+                                                                    </ng-template>
+                                                                </ngx-datatable-column>
+                                                            </ngx-datatable>
+
+                                                        </ng-template>
+                                                    </li>
+                                                    <li [ngbNavItem]="2">
+                                                        <a class="nav-link" ngbNavLink>Minhas Despesas</a>
+                                                        <ng-template ngbNavContent>
+                    
+                                                            <div class="input-group mt-2">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text bg-success border-success white"><i class="la la-search"></i></span>
+                                                                </div>
+                                                                <input type="text" class="form-control" placeholder="Pesquisar" (change)="pesquisaRascunhosAlterada($event.target.value)" value='{{pesquisaRascunhos}}'>
+                                                            </div>
+
+                                                            <ngx-datatable class="mt-2"  [rows]="rascunhosFiltrados" [columnMode]="'force'" [reorderable]="false" [sortType]="multi" [limit]="8" [footerHeight]="50" rowHeight="50" [summaryRow]="false" [summaryPosition]="'bottom'" [loadingIndicator]="loadingIndicator" [scrollbarH]="true" [messages]="{ emptyMessage: 'Sem dados a mostrar', totalMessage: 'registos', selectedMessage: 'selecionado' }" [cssClasses]="{sortAscending: 'la la-arrow-up', sortDescending: 'la la-arrow-down', sortUnset: 'la la-arrows-v', pagerLeftArrow: 'datatable-pagina-anterior', pagerRightArrow: 'datatable-pagina-seguinte', pagerPrevious: 'datatable-primeira-pagina', pagerNext: 'datatable-ultima-pagina' }">
+                                    
+                                                                <ngx-datatable-column [maxWidth]="90"  [resizeable]="false" [sortable]="false">
+                                                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                                                        <div class="btn-group" role="group">
+                                                                            <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill mr-1" (click)="editRascunho(row.Id)" ><i class="feather ft-edit-2"></i> Editar</button>
+                                                                            <!--<button type="button" class="btn btn-sm btn-outline-danger rounded-pill" (click)="deleteRascunho(row.Id)"><i class="feather ft-trash-2"></i> Eliminar</button>-->
+                                                                        </div>
+                                                                    </ng-template>
+                                                                </ngx-datatable-column>
+
+                                                                <ngx-datatable-column name="Data" [width]="150" [maxWidth]="120" [resizeable]="false" prop="DataDoc">
+                                                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                                                        <span [title]="value | date:'dd/MM/yyyy'">{{value | date:'dd/MM/yyyy'}}</span>
+                                                                    </ng-template>
+                                                                </ngx-datatable-column>
+                                                                <ngx-datatable-column name="Documento" [width]="150" [maxWidth]="150" prop="Documento" ></ngx-datatable-column>
+                                                                <ngx-datatable-column name="Obra" [width]="80" prop="NomeObra" ></ngx-datatable-column>
+                                                                <ngx-datatable-column name="Fornecedor" [width]="200" prop="NomeEntidade"></ngx-datatable-column>   
+                                                                <ngx-datatable-column name="Estado" [width]="145" [maxWidth]="200" prop="Estado">
+                                                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                                                        <span  class="badge badge-pill" [ngClass]="{ 'badge-success': value === 'A','badge-danger': value === 'R','badge-light': value === 'E'}"
+                                                                         [title]="value | estadoDocInterno">{{value | estadoDocInterno}}</span>
+                                                                    </ng-template>
+                                                                </ngx-datatable-column>
+                                                                <ngx-datatable-column name="Total" [width]="100"  prop="TotalDocumento">
+                                                                    <ng-template let-value="value" ngx-datatable-cell-template>
+                                                                        <span [title]="value | currency:'EUR':'symbol-narrow':'1.2-4'">{{value | currency:'EUR':'symbol-narrow':'1.2-4'}}</span>
+                                                                    </ng-template>
+                                                                </ngx-datatable-column>                                                        
+                                                            </ngx-datatable>
+                                                        </ng-template>
+                                                    </li>
+                                                </ul>
+                                                <div [ngbNavOutlet]="nav1"></div>                                           
+                                        </div>
+                                    </div>   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

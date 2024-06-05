@@ -1,0 +1,10 @@
+<div (window:resize)="onResize($event)">
+	<app-header></app-header>
+	<ng-container *ngIf="layout === 'vertical' || isMobile == true">
+		<app-verticalnav></app-verticalnav>
+	</ng-container>
+
+	<ng-container *ngIf="layout === 'horizontal' && isMobile == false">
+		<app-horizontalnav></app-horizontalnav>
+	</ng-container>
+</div>

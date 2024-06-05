@@ -1,0 +1,22 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row mb-1">
+        </div>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card mw-100">
+                        <div class="card-content landing-page">                     
+                            <div class="text-center text-landing"> 
+                                 <h1 class="time">{{DateTime | date: 'HH:mm'}}</h1>
+                                 <h3 class="day">{{DateTime | date: 'EEEE d MMMM y'}}</h3>
+                                 <h2 class="greeting">Bem Vindo,</h2>
+                                 <h2 class="name">{{currentUser?.Nome}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
