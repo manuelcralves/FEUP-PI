@@ -69,73 +69,83 @@
 // $theme-color : Menu text color
 // $theme-bg 	: Menu background color
 // ================================================
-@mixin menu-theme($theme-color, $theme-bg){
+@mixin menu-theme($theme-color, $theme-bg) {
 
-	$main-menu-top-hover-bg:            darken($theme-bg, 4%);  //$info
-	$main-menu-top-hover-color:         darken($theme-color, 10%);
+	$main-menu-top-hover-bg: darken($theme-bg, 4%); //$info
+	$main-menu-top-hover-color: darken($theme-color, 10%);
 
-	$main-menu-top-open-color:          darken($theme-color, 10%);
-	$main-menu-top-open-bg:             darken($theme-bg, 4%);
-	$main-menu-top-open-hover-bg:       darken($theme-bg, 6%);
-	$main-menu-top-open-head-bg:        darken($theme-bg, 4%);
+	$main-menu-top-open-color: darken($theme-color, 10%);
+	$main-menu-top-open-bg: darken($theme-bg, 4%);
+	$main-menu-top-open-hover-bg: #b262d3;
+	$main-menu-top-open-head-bg: darken($theme-bg, 4%);
 
-	$main-menu-active-color:        	lighten($theme-color, 10%);
-	$main-menu-active-bg:         	    darken($theme-bg, 4%);
+	$main-menu-active-color: lighten($theme-color, 10%);
+	$main-menu-active-bg: darken($theme-bg, 4%);
 
-	$main-menu-top-active-bg:           darken($theme-bg, 4%);  //$info
-	$main-menu-top-active-color:        $white;
-	$main-menu-top-active-head-bg:      darken($theme-bg, 4%);  //$info
+	$main-menu-top-active-bg: darken($theme-bg, 4%); //$info
+	$main-menu-top-active-color: $white;
+	$main-menu-top-active-head-bg: darken($theme-bg, 4%); //$info
 
-	$main-menu-sub-bg:                  darken($theme-bg, 4%);
-	$main-menu-sub-color:               $theme-color;
-	$main-menu-sub-hover-bg:            darken($theme-bg, 4%);
-	$main-menu-sub-hover-color:         lighten($theme-color, 4%);
-	$main-menu-sub-active-bg:           rgba(0, 0, 0, .06);
+	$main-menu-sub-bg: darken($theme-bg, 4%);
+	$main-menu-sub-color: $theme-color;
+	$main-menu-sub-hover-bg: darken($theme-bg, 4%);
+	$main-menu-sub-hover-color: lighten($theme-color, 4%);
+	$main-menu-sub-active-bg: rgba(0, 0, 0, .06);
 
-	$main-menu-sub-open-bg:             darken($theme-bg, 4%);
-	$main-menu-sub-open-color:          $theme-color;
-	$main-menu-sub-open-hover-bg:       darken($theme-bg, 4%);
+	$main-menu-sub-open-bg: darken($theme-bg, 4%);
+	$main-menu-sub-open-color: $theme-color;
+	$main-menu-sub-open-hover-bg: darken($theme-bg, 4%);
 
-	color:$theme-color;
-	background:$theme-bg;
+	color: $theme-color;
+	background: $theme-bg;
 
-	.main-menu-header{
+	.main-menu-header {
 		padding: 20px;
-		.menu-search{
+
+		.menu-search {
 			background: darken($theme-bg, 10%);
 			padding: 0.5rem 1rem;
 			color: $main-menu-top-hover-color;
-		    &:focus{
-		    	border-color: darken($theme-bg, 15%);
-		    }
+
+			&:focus {
+				border-color: darken($theme-bg, 15%);
+			}
 		}
 	}
-	.navigation{
+
+	.navigation {
 		background: $theme-bg;
-		.navigation-header{
+
+		.navigation-header {
 			color: $theme-color;
 			padding: 30px 20px 8px 20px;
-			span{
-				font-weight:500;
+
+			span {
+				font-weight: 500;
 				text-transform: uppercase;
 			}
 		}
-		li{
-			a{
+
+		li {
+			a {
 				color: $theme-color;
 				transition: all 0.2s ease;
-				i,span{
+
+				i, span {
 					transition: all 0.2s ease;
 				}
-				span{
+
+				span {
 					display: inline-block
 				}
-				span.menu-sub-title{
+
+				span.menu-sub-title {
 					color: lighten($theme-color, 30%);
 				}
 			}
-			&.hover,&.open,&.active{
-				> a{
+
+			&.hover, &.open, &.active {
+				> a {
 					color: $white;
 				}
 			}
@@ -146,24 +156,28 @@
 			// border-left: 4px solid transparent;
 			> a {
 				padding: $menu-padding;
-	    		.label{
-	    			margin-top: 4px;
-	    			margin-right: 5px;
-	    		}
-	    		i{
-				    position: relative;
-				    top: 3px;
-	    		}
+
+				.label {
+					margin-top: 4px;
+					margin-right: 5px;
+				}
+
+				i {
+					position: relative;
+					top: 3px;
+				}
 			}
+
 			&.open {
-				
-				> ul{
+
+				> ul {
 					// background: $main-menu-top-open-bg;
 				}
+
 				> a {
 					color: $main-menu-top-open-color;
 					background: $main-menu-top-open-head-bg;
-					border-right: 4px solid $info;					
+					border-right: 4px solid $info;
 				}
 
 				.hover {
@@ -174,101 +188,106 @@
 				}
 			}
 
-			&:not(.open){
-				> ul{
-					display:none;
+			&:not(.open) {
+				> ul {
+					display: none;
 				}
 			}
 
 			&.hover, &:hover, &.active {
 				> a {
-					color: $main-menu-top-hover-color;					
-					// background-color: $main-menu-top-hover-bg;										
-					> i{
+					color: $main-menu-top-hover-color;
+					// background-color: $main-menu-top-hover-bg;
+					> i {
 						transform: translateX(6px);
 					}
-					> span{
+
+					> span {
 						transform: translateX(4px);
 					}
-					&.mm-next{
+
+					&.mm-next {
 						background-color: inherit;
 					}
 				}
 			}
+
 			&.active {
-				> a {					
-					color:$theme-color;
+				> a {
+					color: $theme-color;
 					font-weight: 700;
 					background: $main-menu-top-open-hover-bg;
 				}
 			}
 
-		    .active {
+			.active {
 				background: $main-menu-top-open-hover-bg;
-		
+
 				> a {
-					color: lighten($theme-color, 10%);					
+					color: lighten($theme-color, 10%);
 					font-weight: 700;
 					background: $main-menu-top-open-hover-bg;
 				}
-		
+
 				.hover {
 					> a {
 						background: $main-menu-top-active-head-bg;
 					}
 				}
-		    }
+			}
 
 			ul {
-				padding:0;
+				padding: 0;
 				margin: 0;
 				font-size: 1rem;
 
 				li {
 					color: $main-menu-sub-color;
 					background: transparent;
-			        > a{
+
+					> a {
 						padding: $menu-second-level-padding;
-			        }
+					}
 				}
+
 				.has-sub {
-					&:not(.open){
-						> ul{
-							display:none;
+					&:not(.open) {
+						> ul {
+							display: none;
 						}
 					}
 				}
-				.open {
 
+				.open {
 					// background: $main-menu-sub-open-bg;
 
 					> a {
 						color: $main-menu-sub-open-color;
 					}
 					//for 2rd level menu
-					> ul{
+					> ul {
 						display: block;
 						// background: $main-menu-sub-open-bg;
-						li >a{
+						li > a {
 							padding: $menu-third-level-padding;
 						}
 						//for 3rd level menu
 						.open {
 							//background: darken($main-menu-sub-open-bg,5%);
 
-							> ul{
+							> ul {
 								display: block;
 								// background: darken($main-menu-sub-open-bg,5%);
-								li >a{
+								li > a {
 									padding: $menu-forth-level-padding;
 								}
 							}
 						}
 					}
+
 					.hover {
 						> a {
 							// background: $main-menu-sub-open-hover-bg;
-
 						}
 					}
 				}
@@ -298,60 +317,66 @@
 				}
 			}
 
-			>ul{
+			> ul {
 				background: $theme-bg;
 			}
 		}
 	}
-
 	//For popout menu
-	ul.menu-popout{
+	ul.menu-popout {
 		background: $theme-bg;
-		li{
-			a{
+
+		li {
+			a {
 				color: $theme-color;
-				span.menu-sub-title{
+
+				span.menu-sub-title {
 					color: lighten($theme-color, 30%);
 				}
 			}
-			&.hover,&:hover,&.open{
-				> a{
+
+			&.hover, &:hover, &.open {
+				> a {
 					// background:$main-menu-top-open-hover-bg;
 				}
 			}
 		}
 
 		.has-sub {
-			&:not(.open){
-				> ul{
-					display:none;
+			&:not(.open) {
+				> ul {
+					display: none;
 				}
 			}
-			&.active{
+
+			&.active {
 				font-weight: normal;
 			}
 		}
+
 		.open {
 			// background: $main-menu-sub-open-bg;
 			> a {
 				color: $main-menu-sub-open-color;
 			}
 			//for 2rd level menu
-			> ul{
+			> ul {
 				display: block;
 				// background: $main-menu-sub-open-bg;
 				//for 3rd level menu
 				.open {
 					background: darken($main-menu-sub-open-bg,5%);
-					> ul{
+
+					> ul {
 						display: block;
 						background: darken($main-menu-sub-open-bg,5%);
 					}
 				}
 			}
-			li.hover,li:hover {
+
+			li.hover, li:hover {
 				> a {
-					// background: $main-menu-sub-open-hover-bg;					
+					// background: $main-menu-sub-open-hover-bg;
 				}
 			}
 		}
@@ -365,14 +390,14 @@
 
 		.active {
 			// background: $main-menu-sub-active-bg;
-			font-weight:700;
+			font-weight: 700;
 
 			> a {
 				color: $main-menu-active-color;
 				// background-color: $main-menu-active-bg;
 			}
 
-			.hover,:hover {
+			.hover, :hover {
 				> a {
 					background-color: transparent;
 				}

@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\pages",
-    "\\src\\app\\pages\\home",
     "\\src\\assets",
     "\\src\\assets\\sass",
     "\\src\\assets\\sass\\scss",
-    "\\src\\environments"
+    "\\src\\assets\\sass\\scss\\bootstrap",
+    "\\src\\assets\\sass\\scss\\core",
+    "\\src\\assets\\sass\\scss\\core\\colors",
+    "\\src\\assets\\sass\\scss\\core\\menu",
+    "\\src\\assets\\sass\\scss\\core\\menu\\menu-types"
   ],
+  "SelectedNode": "\\src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss",
   "PreviewInSolutionExplorer": false
 }

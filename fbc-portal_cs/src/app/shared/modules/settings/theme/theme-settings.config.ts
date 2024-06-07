@@ -20,13 +20,13 @@ export const ThemeSettingsConfig = {
     email: 'on' // on, off
   },
   brand: {
-    brand_name: 'Floresta Bem Cuidada',
+    brand_name: 'Pontual',
     logo: {
       type: 'internal', // internal, url
-      value: 'assets/images/logo/logo-fbc.png' // recommended location for custom images
+      value: 'assets/images/logo/pontual-logo.png' // recommended location for custom images
       // type:'url',
       // value:'http://evolvision.com/wp-content/uploads/2018/01/envelope4-green.png'
     },
   },
-  defaultTitleSuffix: 'Floresta Bem Cuidada'
+  defaultTitleSuffix: 'Pontual'
 };
