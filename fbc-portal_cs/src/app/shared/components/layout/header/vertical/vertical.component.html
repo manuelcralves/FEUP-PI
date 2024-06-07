@@ -27,28 +27,30 @@
     </div>
     <!-- New-->
     <div class="navbar-container content" [hidden]="isMobile && !showNavbar">
-      <div class="collapse navbar-collapse" id="navbar-mobile">
+        <div class="collapse navbar-collapse" id="navbar-mobile">
 
-        <ul class="nav navbar-nav mr-auto float-left"></ul>
+            <ul class="nav navbar-nav mr-auto float-left"></ul>
 
-        <ul class="nav navbar-nav float-right">
+            <ul class="nav navbar-nav float-right">
 
-          <li class="dropdown-user nav-item" ngbDropdown>
-              <a class="nav-link dropdown-user-link" ngbDropdownToggle>
-                  <span *ngIf="currentUser?.Nome" class="mr-1 user-name text-bold-700">{{currentUser?.Nome}}</span>
-                  <span *ngIf="!currentUser?.Nome" class="mr-1 user-name text-bold-700">Utilizador</span>
-                  <span class="avatar avatar-online">
-                      <img src="assets/images/portrait/small/default.png" alt="avatar">
-                      <i></i>
-                  </span>
-              </a>
-              <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" [routerLink]="" (click)="logout()"><i class="feather ft-power"></i>Sair</a>
-              </div>
-        </li>
+                <li class="dropdown-user nav-item" ngbDropdown>
+                    <a class="nav-link dropdown-user-link" ngbDropdownToggle>
+                        <span class="time">{{DateTime | date: 'HH:mm'}} </span>
+                        <span *ngIf="currentUser?.Nome" class="mr-1 user-name text-bold-700">{{currentUser?.Nome}}</span>
+                        <span *ngIf="!currentUser?.Nome" class="mr-1 user-name text-bold-700">Utilizador</span>
+                        <span class="avatar avatar-online">
+                            <img src="assets/images/portrait/small/default.png" alt="avatar">
+                            <i></i>
+                        </span>
+                    </a>
+                    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" [routerLink]="" (click)="logout()"><i class="feather ft-power"></i>Sair</a>
+                    </div>
+                </li>
 
-        </ul>
-      </div>
+            </ul>
+
+        </div>
     </div>
   </div>
 </nav>

@@ -88,7 +88,7 @@ ngx-datatable
                 background-color: rgba(245, 247, 250, 0.5);
             }
             &.active {
-                background-color:#007c34;
+                background-color:#7e0392;
                 color: #fff;
             }
             .datatable-body-cell {
@@ -150,12 +150,12 @@ ngx-datatable
                         margin-left: -1px;
                         text-align: center;
                         text-decoration: none;
-                        color: #007c34;
+                        color: #7e0392;
                     }
                     &:not(.disabled) {
                         &.active {
                             a {
-                                background-color: #007c34;
+                                background-color: #7e0392;
                                 color: #ffffff;
                             }
                         }
