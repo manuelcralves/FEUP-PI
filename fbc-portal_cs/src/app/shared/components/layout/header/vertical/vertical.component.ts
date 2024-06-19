@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject, Renderer2, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, Inject, Renderer2, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core'; import { DOCUMENT } from '@angular/common';
 import { NavbarService } from 'src/app/shared/services/navbar.service';
 import { ThemeSettingsService } from 'src/app/shared/modules/settings/theme/theme-settings.service';
 import { MenuSettingsService } from 'src/app/shared/modules/settings/menu/menu-settings.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { AppConstants } from 'src/app/shared/helpers/app.constants';
@@ -22,9 +22,9 @@ const docWithBrowsersExitFunctions = document as Document & {
   msExitFullscreen(): Promise<void>;
 };
 @Component({
-  selector: 'app-header-vertical',
-  templateUrl: './vertical.component.html',
-  styleUrls: ['./vertical.component.css']
+    selector: 'app-header-vertical',
+    templateUrl: './vertical.component.html',
+    styleUrls: ['./vertical.component.css']
 })
 export class VerticalComponent implements OnInit, AfterViewInit {
 
@@ -71,7 +71,10 @@ export class VerticalComponent implements OnInit, AfterViewInit {
     }
 
     this.router.navigate(['/login']);
-}
+    }
+
+    public currentDate: Date;
+    private timeSubscription: Subscription;
 
   ngOnInit() {
 
@@ -102,7 +105,8 @@ export class VerticalComponent implements OnInit, AfterViewInit {
     this.search = this._themeSettingsConfig.headerIcons.search;
     this.internationalization = this._themeSettingsConfig.headerIcons.internationalization;
     this.notification = this._themeSettingsConfig.headerIcons.notification;
-    this.email = this._themeSettingsConfig.headerIcons.email;
+      this.email = this._themeSettingsConfig.headerIcons.email;
+      this.currentDate = new Date();
   }
 
   ngAfterViewInit(): void {

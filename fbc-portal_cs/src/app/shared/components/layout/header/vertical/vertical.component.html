@@ -35,7 +35,7 @@
 
                 <li class="dropdown-user nav-item" ngbDropdown>
                     <a class="nav-link dropdown-user-link" ngbDropdownToggle>
-                        <span class="time">{{DateTime | date: 'HH:mm'}} </span>
+                        <span class="time">{{currentDate | date: 'HH:mm'}} </span>
                         <span *ngIf="currentUser?.Nome" class="mr-1 user-name text-bold-700">{{currentUser?.Nome}}</span>
                         <span *ngIf="!currentUser?.Nome" class="mr-1 user-name text-bold-700">Utilizador</span>
                         <span class="avatar avatar-online">
