@@ -37,8 +37,8 @@
 #time-hours {
   font-size: 1.5rem;
   color: #fff;
-  padding: 2rem;
-  padding-right: 25rem;
+  padding: 2rem 26rem 0 1rem;
+  margin-right: 0;
 }
 
 #time-day {
@@ -46,4 +46,8 @@
     color: #fff;
     padding: 2rem;
     padding-right: 30rem;
+}
+
+#clock {
+    padding-top: 2rem;
 }
