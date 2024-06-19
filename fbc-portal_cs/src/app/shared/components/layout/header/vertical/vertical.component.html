@@ -32,10 +32,11 @@
             <ul class="nav navbar-nav mr-auto float-left"></ul>
 
             <ul class="nav navbar-nav float-right">
+                <span id="time-hours" class="mr-3 user-name text-bold-700">{{currentDate | date: 'HH:mm'}} </span>
+                <span id="time-day" class="mr-3 user-name text-bold-70">{{currentDate | date: 'EEEE d MMMM y'}} </span>
 
                 <li class="dropdown-user nav-item" ngbDropdown>
                     <a class="nav-link dropdown-user-link" ngbDropdownToggle>
-                        <span class="time">{{currentDate | date: 'HH:mm'}} </span>
                         <span *ngIf="currentUser?.Nome" class="mr-1 user-name text-bold-700">{{currentUser?.Nome}}</span>
                         <span *ngIf="!currentUser?.Nome" class="mr-1 user-name text-bold-700">Utilizador</span>
                         <span class="avatar avatar-online">

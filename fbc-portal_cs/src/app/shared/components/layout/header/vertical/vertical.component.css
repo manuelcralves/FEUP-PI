@@ -33,3 +33,17 @@
 .header-navbar .navbar-header .navbar-brand .brand-text {
   padding-left: 11px !important;
 }
+
+#time-hours {
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 2rem;
+  padding-right: 25rem;
+}
+
+#time-day {
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 2rem;
+    padding-right: 30rem;
+}
