@@ -37,6 +37,10 @@ img{
 	font-size: 1.5rem;
 }
 
+.card {
+	max-height: 350px; 
+}
+
 @media (min-width: 576px) {
 	 h1 {
 		font-size: 5.5rem;

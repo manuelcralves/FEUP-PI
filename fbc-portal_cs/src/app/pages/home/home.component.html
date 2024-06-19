@@ -3,15 +3,47 @@
         <div class="content-header row mb-1">
         </div>
         <div class="content-body">
+            <!-- Primeira Linha -->
             <div class="row">
-                <div class="col-sm-12">
+                <!-- Primeira Coluna da Primeira Linha -->
+                <div class="col-sm-6">
                     <div class="card mw-100">
-                        <div class="card-content landing-page">                     
-                            <div class="text-center text-landing"> 
-                                 <h1 class="time">{{DateTime | date: 'HH:mm'}}</h1>
-                                 <h3 class="day">{{DateTime | date: 'EEEE d MMMM y'}}</h3>
-                                 <h2 class="greeting">Bem Vindo,</h2>
-                                 <h2 class="name">{{currentUser?.Nome}}</h2>
+                        <div class="card-content landing-page">
+                            <div class="text-center text-landing">
+                                <h1 class="time">{{DateTime | date: 'HH:mm'}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Segunda Coluna da Primeira Linha -->
+                <div class="col-sm-6">
+                    <div class="card mw-100">
+                        <div class="card-content landing-page">
+                            <div class="text-center text-landing">
+                                <h3 class="day">{{DateTime | date: 'EEEE d MMMM y'}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Segunda Linha -->
+            <div class="row">
+                <!-- Primeira Coluna da Segunda Linha -->
+                <div class="col-sm-6">
+                    <div class="card mw-100">
+                        <div class="card-content landing-page">
+                            <div class="text-center text-landing">
+                                <h2 class="greeting">Bem Vindo,</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Segunda Coluna da Segunda Linha -->
+                <div class="col-sm-6">
+                    <div class="card mw-100">
+                        <div class="card-content landing-page">
+                            <div class="text-center text-landing">
+                                <h2 class="name">{{currentUser?.Nome}}</h2>
                             </div>
                         </div>
                     </div>
