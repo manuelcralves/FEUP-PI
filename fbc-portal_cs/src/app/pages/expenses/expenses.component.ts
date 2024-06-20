@@ -127,6 +127,8 @@ export class ExpensesComponent implements OnInit {
             this.documentos = documentos;
 
             this.filtrarDocumentos();
+
+            this.internosService.atualizarTotalDespesas(this.documentos.length);
         },
         error: (error: any) => {
             this.blockUIExpensesTable.stop();

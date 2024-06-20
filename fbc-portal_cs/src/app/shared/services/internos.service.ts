@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError, map, Observable } from "rxjs";
+import { catchError, map, Observable, BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { TipoDocumentosInternos } from "../interfaces/tipo-documentos-internos";
 import { SerieInternos } from "../interfaces/serie-internos";
@@ -11,8 +11,17 @@ import { DocumentoInterno } from "../interfaces/documento-interno";
     providedIn: "root",
 })
 export class InternosService {
+    private totalDespesasSource = new BehaviorSubject<number>(0);
+
     constructor(private httpClient: HttpClient) { }
 
+    atualizarTotalDespesas(total: number) {
+        this.totalDespesasSource.next(total);
+    }
+
+    obterTotalDespesas(): Observable<number> {
+        return this.totalDespesasSource.asObservable();
+    }
     
     alterarDocumento(id: string, documento: DocumentoInterno, ficheirosAnexos: File[]): Observable<void> {
 
