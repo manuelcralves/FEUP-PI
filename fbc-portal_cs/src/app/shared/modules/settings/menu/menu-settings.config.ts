@@ -11,7 +11,7 @@ export const MenuSettingsConfig: MenuConfig = {
         page: '/home',
       },
       {
-        title: 'Encomedas',
+        title: 'Encomendas',
         icon: 'la-cube',
         page: '/orders'
       },
