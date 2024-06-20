@@ -152,6 +152,9 @@ export class OrdersComponent implements OnInit {
             this.documentos = documentos;
 
             this.filtrarDocumentos();
+
+            this.comprasService.atualizarTotalEncomendas(this.documentos.length);
+
         },
         error: (error: any) => {
             this.blockUIOrdersTable.stop();

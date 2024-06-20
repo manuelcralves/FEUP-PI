@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError, map, Observable } from "rxjs";
+import { catchError, map, Observable, BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { TipoDocumentosCompras } from "../interfaces/tipo-documentos-compras";
 import { SerieCompras } from "../interfaces/serie-compras";
@@ -10,7 +10,16 @@ import { DocumentoCompra } from "../interfaces/documento-compra";
     providedIn: "root",
 })
 export class ComprasService {
+    private totalEncomendasSource = new BehaviorSubject<number>(0);
     constructor(private httpClient: HttpClient) { }
+
+    atualizarTotalEncomendas(total: number) {
+        this.totalEncomendasSource.next(total);
+    }
+
+    obterTotalEncomendas(): Observable<number> {
+        return this.totalEncomendasSource.asObservable();
+    }
 
     alterarDocumento(id: string, documento: DocumentoCompra, ficheirosAnexos: File[]): Observable<void> {
 
