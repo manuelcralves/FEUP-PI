@@ -107,7 +107,10 @@ export class VerticalComponent implements OnInit, AfterViewInit {
     this.notification = this._themeSettingsConfig.headerIcons.notification;
       this.email = this._themeSettingsConfig.headerIcons.email;
       this.currentDate = new Date();
-  }
+      this.timeSubscription = interval(1000).subscribe(() => {
+          this.currentDate = new Date();
+      });
+    }
 
   ngAfterViewInit(): void {
     this.refreshView();
