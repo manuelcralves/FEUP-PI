@@ -2,15 +2,17 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\app",
+    "\\src\\app\\pages",
+    "\\src\\app\\shared\\components",
+    "\\src\\app\\shared\\components\\layout",
+    "\\src\\app\\shared\\components\\layout\\header",
+    "\\src\\app\\shared\\components\\layout\\header\\vertical",
     "\\src\\assets",
-    "\\src\\assets\\sass",
-    "\\src\\assets\\sass\\scss",
-    "\\src\\assets\\sass\\scss\\bootstrap",
-    "\\src\\assets\\sass\\scss\\core",
-    "\\src\\assets\\sass\\scss\\core\\colors",
-    "\\src\\assets\\sass\\scss\\core\\menu",
-    "\\src\\assets\\sass\\scss\\core\\menu\\menu-types"
+    "\\src\\assets\\images",
+    "\\src\\assets\\images\\portrait",
+    "\\src\\assets\\images\\portrait\\small"
   ],
-  "SelectedNode": "\\src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss",
+  "SelectedNode": "\\src\\assets\\images\\portrait\\small",
   "PreviewInSolutionExplorer": false
 }

@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\variables\\_components-variables.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\assets\\sass\\scss\\core\\variables\\_components-variables.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\bootstrap\\_variables.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\assets\\sass\\scss\\bootstrap\\_variables.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\pages\\home\\home.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\pages\\home\\home.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\menu\\_navigation.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\assets\\sass\\scss\\core\\menu\\_navigation.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\pages\\home\\home.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\app\\pages\\home\\home.module.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,63 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "vertical-menu-modern.scss",
-              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss",
-              "RelativeDocumentMoniker": "src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss",
-              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss",
-              "RelativeToolTip": "src\\assets\\sass\\scss\\core\\menu\\menu-types\\vertical-menu-modern.scss",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
-              "WhenOpened": "2024-06-07T08:36:45.053Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_components-variables.scss",
-              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\variables\\_components-variables.scss",
-              "RelativeDocumentMoniker": "src\\assets\\sass\\scss\\core\\variables\\_components-variables.scss",
-              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\variables\\_components-variables.scss",
-              "RelativeToolTip": "src\\assets\\sass\\scss\\core\\variables\\_components-variables.scss",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAABwAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
-              "WhenOpened": "2024-06-07T08:28:22.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_variables.scss",
-              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\bootstrap\\_variables.scss",
-              "RelativeDocumentMoniker": "src\\assets\\sass\\scss\\bootstrap\\_variables.scss",
-              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\bootstrap\\_variables.scss",
-              "RelativeToolTip": "src\\assets\\sass\\scss\\bootstrap\\_variables.scss",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAADoAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
-              "WhenOpened": "2024-06-07T08:27:43.985Z",
+              "Title": "vertical.component.css",
+              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.css",
+              "RelativeDocumentMoniker": "src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.css",
+              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.css",
+              "RelativeToolTip": "src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.css",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACcAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-06-19T14:55:05.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "_navigation.scss",
-              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\menu\\_navigation.scss",
-              "RelativeDocumentMoniker": "src\\assets\\sass\\scss\\core\\menu\\_navigation.scss",
-              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\assets\\sass\\scss\\core\\menu\\_navigation.scss",
-              "RelativeToolTip": "src\\assets\\sass\\scss\\core\\menu\\_navigation.scss",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
-              "WhenOpened": "2024-06-07T08:26:31.794Z",
+              "Title": "home.module.ts",
+              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\pages\\home\\home.module.ts",
+              "RelativeDocumentMoniker": "src\\app\\pages\\home\\home.module.ts",
+              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\pages\\home\\home.module.ts",
+              "RelativeToolTip": "src\\app\\pages\\home\\home.module.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-06-19T14:07:21.47Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "vertical.component.html",
+              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.html",
+              "RelativeDocumentMoniker": "src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.html",
+              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.html",
+              "RelativeToolTip": "src\\app\\shared\\components\\layout\\header\\vertical\\vertical.component.html",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACMAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-06-19T14:00:57.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "home.component.html",
+              "DocumentMoniker": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\pages\\home\\home.component.html",
+              "RelativeDocumentMoniker": "src\\app\\pages\\home\\home.component.html",
+              "ToolTip": "C:\\Users\\manue\\OneDrive\\Desktop\\PI\\FEUP-PI\\fbc-portal_cs\\src\\app\\pages\\home\\home.component.html",
+              "RelativeToolTip": "src\\app\\pages\\home\\home.component.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-06-19T13:39:01.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }

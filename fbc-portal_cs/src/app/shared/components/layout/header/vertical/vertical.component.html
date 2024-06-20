@@ -29,14 +29,15 @@
     <div class="navbar-container content" [hidden]="isMobile && !showNavbar">
         <div class="collapse navbar-collapse" id="navbar-mobile">
 
-            <ul class="nav navbar-nav mr-auto float-left"></ul>
-
-            <ul class="nav navbar-nav float-right">
+            <ul class="nav navbar-nav mr-auto float-left">
                 <span id="clock" class="avatar avatar-online">
                     <img src="assets/images/portrait/small/relogio.png" alt="clock">
                 </span>
                 <span id="time-hours" class="mr-3 user-name text-bold-700">{{currentDate | date: 'HH:mm'}} </span>
                 <span id="time-day" class="mr-3 user-name text-bold-70">{{currentDate | date: 'EEEE d MMMM y'}} </span>
+            </ul>
+
+            <ul class="nav navbar-nav float-right">
 
                 <li class="dropdown-user nav-item" ngbDropdown>
                     <a class="nav-link dropdown-user-link" ngbDropdownToggle>
