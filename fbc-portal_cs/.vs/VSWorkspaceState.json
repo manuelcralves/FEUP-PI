@@ -4,15 +4,15 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\pages",
-    "\\src\\app\\shared\\components",
-    "\\src\\app\\shared\\components\\layout",
-    "\\src\\app\\shared\\components\\layout\\header",
-    "\\src\\app\\shared\\components\\layout\\header\\vertical",
+    "\\src\\app\\pages\\expenses\\expense",
+    "\\src\\app\\pages\\home",
+    "\\src\\app\\pages\\orders",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\services",
     "\\src\\assets",
     "\\src\\assets\\images",
-    "\\src\\assets\\images\\portrait",
     "\\src\\assets\\images\\portrait\\small"
   ],
-  "SelectedNode": "\\src\\assets\\images\\portrait\\small",
+  "SelectedNode": "\\src\\app\\pages\\home\\home.component.html",
   "PreviewInSolutionExplorer": false
 }

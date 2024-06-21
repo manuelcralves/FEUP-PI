@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     currentUser: any;
     totalDespesas: number = 0;
     totalEncomendas: number = 0; 
+    public totalEncomendasPorAprovar: number = 0;
 
   //Hour = DateTime.now().toFormat("t")
   //Day = DateTime.now().toFormat("DDD")
@@ -37,6 +38,10 @@ export class HomeComponent implements OnInit {
 
         this.comprasService.obterTotalEncomendas().subscribe(total => {
             this.totalEncomendas = total;
+        });
+
+        this.comprasService.obterTotalEncomendasPorAprovar().subscribe(total => {
+            this.totalEncomendasPorAprovar = total;
         });
   }
 

@@ -21,6 +21,12 @@ export class ComprasService {
         return this.totalEncomendasSource.asObservable();
     }
 
+    obterTotalEncomendasPorAprovar(): Observable<number> {
+        return this.getRascunhos().pipe(
+            map(encomendas => encomendas.length)
+        );
+    }
+
     alterarDocumento(id: string, documento: DocumentoCompra, ficheirosAnexos: File[]): Observable<void> {
 
         if (!id)

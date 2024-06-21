@@ -26,7 +26,9 @@ export class OrdersComponent implements OnInit {
 
   public pesquisaRascunhos = '';
   public rascunhos: any[];
-  public rascunhosFiltrados: any[];
+    public rascunhosFiltrados: any[];
+
+    public totalEncomendasPorAprovar: number = 0;
 
   constructor(
     private comprasService: ComprasService,
