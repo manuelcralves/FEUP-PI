@@ -95,7 +95,7 @@ h2.encomendas, h2.tendencias-encomendas, h2.Despesas, h2.tendencias-despesas {
 	color: #9f5dd2;
 	font-weight: 900;
 	position: absolute;
-	top: 10%; /* Ajuste conforme necessário para posicionar abaixo do .valor-destaque1 */
+	top: 10%; 
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
@@ -104,12 +104,12 @@ h2.encomendas, h2.tendencias-encomendas, h2.Despesas, h2.tendencias-despesas {
 	color: #8C0EC1;
 	font-weight: 900;
 	position: absolute;
-	top: 90%; /* Ajuste conforme necessário para posicionar abaixo do .valor-destaque1 */
+	top: 90%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
-#donutChart {
+#donutChartEncomendas, #donutChartDespesas {
 	width: 100px !important;
 	height: 100px !important;
 	margin: 0 auto;

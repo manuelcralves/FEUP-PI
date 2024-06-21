@@ -4,15 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\expenses\\expense",
     "\\src\\app\\pages\\home",
     "\\src\\app\\pages\\orders",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\services",
     "\\src\\assets",
-    "\\src\\assets\\images",
-    "\\src\\assets\\images\\portrait\\small"
+    "\\src\\assets\\images"
   ],
-  "SelectedNode": "\\src\\app\\pages\\home\\home.component.html",
+  "SelectedNode": "\\src\\app\\pages\\home\\home.component.scss",
   "PreviewInSolutionExplorer": false
 }

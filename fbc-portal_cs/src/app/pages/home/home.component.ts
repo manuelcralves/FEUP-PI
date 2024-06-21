@@ -53,10 +53,13 @@ export class HomeComponent implements OnInit {
         });
 
         google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(this.drawChart.bind(this));
+        google.charts.setOnLoadCallback(this.drawChartEncomendas.bind(this));
+
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(this.drawChartDespesas.bind(this));
     }
 
-    drawChart() {
+    drawChartEncomendas() {
         const data = new google.visualization.DataTable();
         data.addColumn('string', 'Status');
         data.addColumn('number', 'Quantidade');
@@ -67,19 +70,45 @@ export class HomeComponent implements OnInit {
 
         const options = {
             pieHole: 0.6,
-            legend: 'none', // Mantém as legendas ocultas
-            pieSliceText: 'none', // Exibe as porcentagens nas fatias
+            legend: 'none', 
+            pieSliceText: 'none', 
             slices: {
-                0: { color: '#8C0EC1' }, // Define a cor da primeira fatia para verde
-                1: { color: '#9f5dd2' } // Define a cor da segunda fatia para azul
+                0: { color: '#8C0EC1' }, 
+                1: { color: '#9f5dd2' }
             },
-            backgroundColor: 'transparent', // Define o fundo do gráfico como transparente
-            width: 400, // Define a largura do gráfico
-            height: 300 // Define a altura do gráfico
+            backgroundColor: 'transparent', 
+            width: 400, 
+            height: 300 
         };
 
-        const chart = new google.visualization.PieChart(document.getElementById('donutChart'));
+        const chart = new google.visualization.PieChart(document.getElementById('donutChartEncomendas'));
         chart.draw(data, options);
+    }
+
+    drawChartDespesas() {
+        const data = new google.visualization.DataTable();
+        data.addColumn('string', 'Status');
+        data.addColumn('number', 'Quantidade');
+        data.addRows([
+            ['Aprovadas', 6], // placeholders pois não há valores das despesas
+            ['Por Aprovar', 1]
+        ]);
+
+        const options = {
+            pieHole: 0.6,
+            legend: 'none', 
+            pieSliceText: 'none', 
+            slices: {
+                0: { color: '#8C0EC1' },
+                1: { color: '#9f5dd2' } 
+            },
+            backgroundColor: 'transparent', 
+            width: 400, 
+            height: 300 
+        };
+
+        const chartDespesas = new google.visualization.PieChart(document.getElementById('donutChartDespesas'));
+        chartDespesas.draw(data, options);
     }
 
 }
