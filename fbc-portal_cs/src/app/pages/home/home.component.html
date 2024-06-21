@@ -8,10 +8,9 @@
                     <h2 class="encomendas">Encomendas</h2>
                     <div class="card mw-100">
                         <div class="card-content landing-page">
-                            <div class="text-center text-landing">
-                                <h3 class="valor-destaque">Total de Encomendas Aprovadas: {{ totalEncomendas - totalEncomendasPorAprovar}}</h3>
-                                <h3 class="valor-destaque">Total de Encomendas por Aprovar: {{ totalEncomendasPorAprovar }}</h3>
-                            </div>
+                            <h3 class="valor-destaque1"> {{totalEncomendasPorAprovar}} por aprovar</h3>
+                            <div id="donutChart"></div>
+                            <h3 class="valor-destaque2"> {{totalEncomendas}} Aprovadas</h3>
                         </div>
                     </div>
                 </div>
@@ -20,7 +19,7 @@
                     <div class="card mw-100">
                         <div class="card-content landing-page">
                             <div class="text-center text-landing">
-                                <h3 class="valor-destaque">Total de Encomendas: {{ totalEncomendas }}</h3>
+                                <h3 class="valor-destaque">Total de Encomendas: {{ totalEncomendas + totalEncomendasPorAprovar}}</h3>
                             </div>
                         </div>
                     </div>
@@ -32,7 +31,7 @@
                     <div class="card mw-100">
                         <div class="card-content landing-page">
                             <div class="text-center text-landing">
-                                <h3 class="valor-destaque">Total de Despesas Aprovadas: {{ totalDespesas - totalDespesasPorAprovar }}</h3>
+                                <h3 class="valor-destaque">Total de Despesas Aprovadas: {{ totalDespesas }}</h3>
                                 <h3 class="valor-destaque">Total de Despesas por Aprovar: {{ totalDespesasPorAprovar }}</h3>
                             </div>
                         </div>
@@ -43,7 +42,7 @@
                     <div class="card mw-100">
                         <div class="card-content landing-page">
                             <div class="text-center text-landing">
-                                <h3 class="valor-destaque">Total de Despesas: {{ totalDespesas }}</h3>
+                                <h3 class="valor-destaque">Total de Despesas: {{ totalDespesas + totalDespesasPorAprovar}}</h3>
                             </div>
                         </div>
                     </div>

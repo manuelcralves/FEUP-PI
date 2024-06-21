@@ -91,7 +91,32 @@ h2.encomendas, h2.tendencias-encomendas, h2.Despesas, h2.tendencias-despesas {
 	text-align: center;
 }
 
+.valor-destaque1 {
+	color: #9f5dd2;
+	font-weight: 900;
+	position: absolute;
+	top: 10%; /* Ajuste conforme necessário para posicionar abaixo do .valor-destaque1 */
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.valor-destaque2 {
+	color: #8C0EC1;
+	font-weight: 900;
+	position: absolute;
+	top: 90%; /* Ajuste conforme necessário para posicionar abaixo do .valor-destaque1 */
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#donutChart {
+	width: 100px !important;
+	height: 100px !important;
+	margin: 0 auto;
+	padding: 1rem 30rem 0 0;
+}
+
 .valor-destaque {
-	color: purple; 
-	font-weight: 500; 
+	color: purple;
+    font-weight: 900;
 }
