@@ -18,7 +18,9 @@ export class ComprasService {
     }
 
     obterTotalEncomendas(): Observable<number> {
-        return this.totalEncomendasSource.asObservable();
+        return this.getEncomendas().pipe(
+            map(encomendas => encomendas.length)
+        );
     }
 
     obterTotalEncomendasPorAprovar(): Observable<number> {

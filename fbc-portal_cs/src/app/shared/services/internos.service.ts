@@ -20,7 +20,15 @@ export class InternosService {
     }
 
     obterTotalDespesas(): Observable<number> {
-        return this.totalDespesasSource.asObservable();
+        return this.getDespesas().pipe(
+            map(encomendas => encomendas.length)
+        );
+    }
+
+    obterTotalDespesasPorAprovar(): Observable<number> {
+        return this.getRascunhos().pipe(
+            map(encomendas => encomendas.length)
+        );
     }
     
     alterarDocumento(id: string, documento: DocumentoInterno, ficheirosAnexos: File[]): Observable<void> {
