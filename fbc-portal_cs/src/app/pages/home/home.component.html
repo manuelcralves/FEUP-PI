@@ -5,7 +5,9 @@
         <div class="content-body">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2 class="encomendas">Encomendas</h2>
+                    <h2 class="encomendas">
+                        <a routerLink="/orders" style="color: inherit; text-decoration: none;">Encomendas</a>
+                    </h2>
                     <div class="card mw-100">
                         <div class="card-content landing-page">
                             <h3 class="valor-destaque1"> {{totalEncomendasPorAprovar}} por aprovar</h3>
@@ -15,7 +17,9 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <h2 class="tendencias-encomendas">Tendencias (Encomendas Aprovadas)</h2>
+                    <h2 class="tendencias-encomendas">
+                        <a routerLink="/approval" style="color: inherit; text-decoration: none;">Tendencias (Encomendas Aprovadas)</a>
+                    </h2>
                     <div class="card mw-100">
                         <div class="chart-container landing-page">
                                 <!--<h3 class="valor-destaque">Total de Encomendas: {{ totalEncomendas + totalEncomendasPorAprovar }}</h3>-->
@@ -26,7 +30,9 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <h2 class="Despesas">Despesas</h2>
+                    <h2 class="despesas">
+                        <a routerLink="/expenses" style="color: inherit; text-decoration: none;">Despesas</a>
+                    </h2>
                     <div class="card mw-100">
                         <div class="card-content landing-page">
                             <!-- <h3 class="valor-destaque1"> {{totalDespesasPorAprovar}} por aprovar</h3> -->
@@ -39,7 +45,9 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <h2 class="tendencias-despesas">Tendencias (Despesas Aprovadas)</h2>
+                    <h2 class="tendencias-despesas">
+                        <a routerLink="/approval" style="color: inherit; text-decoration: none;">Tendencias (Despesas Aprovadas)</a>
+                    </h2>
                     <div class="card mw-100">
                         <div class="chart-container landing-page">
                             <!--<h3 class="valor-destaque">Total de Despesas: {{ totalEncomendas + totalEncomendasPorAprovar }}</h3>-->

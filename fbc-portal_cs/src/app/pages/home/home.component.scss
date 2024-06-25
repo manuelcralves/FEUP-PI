@@ -18,11 +18,10 @@ img{
 
 .landing-page {
 	height: 700px;
-	background-image: url("../../../assets/images/backgrounds/blue_graph.jpg");
+	background-image: url("../../../assets/images/backgrounds/blue-graph.png");
 	background-size: cover;
-	opacity: 0.5;
 	border-radius: 20px; 
-	border: 3px solid #8C0EC1;
+	border: 2px solid #8C0EC1;
 }
 
 .time{
@@ -85,7 +84,7 @@ img{
 	}
 }
 
-h2.encomendas, h2.tendencias-encomendas, h2.Despesas, h2.tendencias-despesas {
+h2.encomendas, h2.tendencias-encomendas, h2.despesas, h2.tendencias-despesas {
 	color: purple;
 	font-weight: bold;
 	text-align: center;
