@@ -121,5 +121,17 @@ h2.encomendas, h2.tendencias-encomendas, h2.Despesas, h2.tendencias-despesas {
     font-weight: 900;
 }
 
+.chart-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%; /* Ajuste a altura conforme necessário */
+	width: 100%; /* Garante que o contêiner ocupe a largura total */
+}
+
+/* Ajuste para garantir que os gráficos não ultrapassem um tamanho máximo */
 #lineChartEncomendas {
+	max-width: 100% !important;
+	height: auto !important;
+	padding-right: 55rem;
 }

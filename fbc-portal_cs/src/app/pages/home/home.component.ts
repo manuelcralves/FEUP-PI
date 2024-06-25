@@ -85,22 +85,46 @@ export class HomeComponent implements OnInit {
     }
 
     drawLineChartEncomendas() {
-        const data = new google.visualization.DataTable();
-        data.addColumn('string', 'Trimestre');
-        data.addColumn('number', 'Encomendas Aprovadas');
-        data.addRows([
-            ['Jan-Mar', Math.floor(Math.random() * 1000)], 
-            ['Abr-Jun', Math.floor(Math.random() * 1000)],
-            ['Jul-Set', Math.floor(Math.random() * 1000)],
-            ['Out-Dez', Math.floor(Math.random() * 1000)]
+        const data = google.visualization.arrayToDataTable([
+            ['Trimestre', 'Encomendas Aprovadas', { 'type': 'string', 'role': 'style' }],
+            ['Jan-Mar', 4, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Abr-Jun', 2, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Jul-Set', 8, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Out-Dez', 6, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }']
         ]);
 
         const options = {
-            title: 'Encomendas Aprovadas por Trimestre',
-            curveType: 'function',
-            legend: { position: 'bottom' },
-            width: 400,
-            height: 300
+            curveType: 'none',
+            legend: 'none',
+            backgroundColor: 'transparent',
+            width: 800,
+            height: 340,
+            hAxis: {
+                gridlines: {
+                    color: 'transparent'
+                },
+                textStyle: {
+                    color: '#8C0EC1',
+                    bold: true
+                },
+                baselineColor: 'transparent'
+            },
+            vAxis: {
+                gridlines: {
+                    color: 'transparent'
+                },
+                textStyle: {
+                    color: '#8C0EC1',
+                    bold: true
+                },
+                baselineColor: 'transparent'
+            },
+            series: {
+                0: {
+                    color: '#8C0EC1', 
+                    pointsVisible: true,
+                }
+            }
         };
 
         const chart = new google.visualization.LineChart(document.getElementById('lineChartEncomendas'));
