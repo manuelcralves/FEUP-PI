@@ -30,6 +30,24 @@ export class InternosService {
             map(encomendas => encomendas.length)
         );
     }
+
+    obterDespesasPorTrimestre(ano: number): Observable<number[]> {
+        return this.getDespesas().pipe(
+            map(despesas => {
+                const trimestres = [0, 0, 0, 0];
+                despesas.forEach(despesa => {
+                    if (despesa.DataDoc) {
+                        const data = new Date(despesa.DataDoc);
+                        if (data.getFullYear() === ano) {
+                            const trimestre = Math.floor(data.getMonth() / 3);
+                            trimestres[trimestre]++;
+                        }
+                    }
+                });
+                return trimestres;
+            })
+        );
+    }
     
     alterarDocumento(id: string, documento: DocumentoInterno, ficheirosAnexos: File[]): Observable<void> {
 

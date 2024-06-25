@@ -41,8 +41,9 @@ export class HomeComponent implements OnInit {
             totalEncomendas: this.comprasService.obterTotalEncomendas(),
             totalEncomendasPorAprovar: this.comprasService.obterTotalEncomendasPorAprovar(),
             totalDespesasPorAprovar: this.internosService.obterTotalDespesasPorAprovar(),
-            encomendasAprovadas2023: this.comprasService.obterEncomendasPorTrimestre(2023) 
-        }).subscribe(({ totalDespesas, totalEncomendas, totalEncomendasPorAprovar, totalDespesasPorAprovar, encomendasAprovadas2023 }) => {
+            encomendasAprovadas: this.comprasService.obterEncomendasPorTrimestre(2023),
+            despesasAprovadas: this.internosService.obterDespesasPorTrimestre(2023)
+        }).subscribe(({ totalDespesas, totalEncomendas, totalEncomendasPorAprovar, totalDespesasPorAprovar, encomendasAprovadas, despesasAprovadas }) => {
             this.totalDespesas = totalDespesas;
             this.totalEncomendas = totalEncomendas;
             this.totalEncomendasPorAprovar = totalEncomendasPorAprovar;
@@ -53,7 +54,8 @@ export class HomeComponent implements OnInit {
             google.charts.setOnLoadCallback(() => {
                 this.drawChartEncomendas();
                 this.drawChartDespesas();
-                this.drawLineChartEncomendas(encomendasAprovadas2023); 
+                this.drawLineChartEncomendas(encomendasAprovadas);
+                this.drawLineChartDespesas(despesasAprovadas);
             });
         });
     }
@@ -159,4 +161,56 @@ export class HomeComponent implements OnInit {
         chartDespesas.draw(data, options);
     }
 
+    drawLineChartDespesas(trimestres: number[]) {
+        const data = google.visualization.arrayToDataTable([
+            ['Trimestre', 'Despesas Aprovadas', { 'type': 'string', 'role': 'style' }],
+            ['Jan-Mar', 1, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Abr-Jun', 3, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Jul-Set', 2, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Out-Dez', 0, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }']
+            /*['Jan-Mar', trimestres[0], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Abr-Jun', trimestres[1], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Jul-Set', trimestres[2], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Out-Dez', trimestres[3], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }']*/
+            // Não há data para despesas, usar placeholders 
+        ]);
+
+        const options = {
+            curveType: 'none',
+            legend: 'none',
+            backgroundColor: 'transparent',
+            width: 800,
+            height: 340,
+            hAxis: {
+                gridlines: {
+                    color: 'transparent'
+                },
+                textStyle: {
+                    color: '#8C0EC1',
+                    bold: true
+                },
+                baselineColor: 'transparent'
+            },
+            vAxis: {
+                gridlines: {
+                    color: 'transparent'
+                },
+                textStyle: {
+                    color: '#8C0EC1',
+                    bold: true
+                },
+                baselineColor: 'transparent',
+                format: '0',
+            },
+            series: {
+                0: {
+                    color: '#8C0EC1',
+                    pointsVisible: true,
+                }
+            }
+        };
+
+        const chart = new google.visualization.LineChart(document.getElementById('lineChartDespesas'));
+        chart.draw(data, options);
+    }
 }
