@@ -41,7 +41,8 @@ export class HomeComponent implements OnInit {
             totalEncomendas: this.comprasService.obterTotalEncomendas(),
             totalEncomendasPorAprovar: this.comprasService.obterTotalEncomendasPorAprovar(),
             totalDespesasPorAprovar: this.internosService.obterTotalDespesasPorAprovar(),
-        }).subscribe(({ totalDespesas, totalEncomendas, totalEncomendasPorAprovar, totalDespesasPorAprovar }) => {
+            encomendasAprovadas2023: this.comprasService.obterEncomendasPorTrimestre(2023) 
+        }).subscribe(({ totalDespesas, totalEncomendas, totalEncomendasPorAprovar, totalDespesasPorAprovar, encomendasAprovadas2023 }) => {
             this.totalDespesas = totalDespesas;
             this.totalEncomendas = totalEncomendas;
             this.totalEncomendasPorAprovar = totalEncomendasPorAprovar;
@@ -52,11 +53,10 @@ export class HomeComponent implements OnInit {
             google.charts.setOnLoadCallback(() => {
                 this.drawChartEncomendas();
                 this.drawChartDespesas();
-                this.drawLineChartEncomendas();
+                this.drawLineChartEncomendas(encomendasAprovadas2023); 
             });
         });
     }
-
 
     drawChartEncomendas() {
         const data = new google.visualization.DataTable();
@@ -84,13 +84,13 @@ export class HomeComponent implements OnInit {
         chart.draw(data, options);
     }
 
-    drawLineChartEncomendas() {
+    drawLineChartEncomendas(trimestres: number[]) {
         const data = google.visualization.arrayToDataTable([
             ['Trimestre', 'Encomendas Aprovadas', { 'type': 'string', 'role': 'style' }],
-            ['Jan-Mar', 4, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
-            ['Abr-Jun', 2, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
-            ['Jul-Set', 8, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
-            ['Out-Dez', 6, 'point { size: 5; shape-type: circle; fill-color: #18eadf; }']
+            ['Jan-Mar', trimestres[0], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Abr-Jun', trimestres[1], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Jul-Set', trimestres[2], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }'],
+            ['Out-Dez', trimestres[3], 'point { size: 5; shape-type: circle; fill-color: #18eadf; }']
         ]);
 
         const options = {
@@ -117,7 +117,8 @@ export class HomeComponent implements OnInit {
                     color: '#8C0EC1',
                     bold: true
                 },
-                baselineColor: 'transparent'
+                baselineColor: 'transparent',
+                format: '0',
             },
             series: {
                 0: {

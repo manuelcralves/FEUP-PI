@@ -29,6 +29,37 @@ export class ComprasService {
         );
     }
 
+    /*obterTotalEncomendasAprovadasEntreMesesAno(mesInicio: number, mesFim: number, ano: number): Observable<number> {
+        return this.getEncomendas().pipe(
+            map(encomendas => {
+                const inicio = new Date(ano, mesInicio - 1, 1); // Primeiro dia do mês de início
+                const fim = new Date(ano, mesFim, 0, 23, 59, 59); // Último dia do mês de fim
+
+                return encomendas.filter(encomenda => {
+                    return encomenda.DataAprovacao && encomenda.DataAprovacao >= inicio && encomenda.DataAprovacao <= fim;
+                }).length;
+            })
+        );
+    }*/
+
+    obterEncomendasPorTrimestre(ano: number): Observable<number[]> {
+        return this.getEncomendas().pipe(
+            map(encomendas => {
+                const trimestres = [0, 0, 0, 0];
+                encomendas.forEach(encomenda => {
+                    if (encomenda.DataDoc) {
+                        const data = new Date(encomenda.DataDoc);
+                        if (data.getFullYear() === ano) {
+                            const trimestre = Math.floor(data.getMonth() / 3);
+                            trimestres[trimestre]++;
+                        }
+                    }
+                });
+                return trimestres;
+            })
+        );
+    }
+
     alterarDocumento(id: string, documento: DocumentoCompra, ficheirosAnexos: File[]): Observable<void> {
 
         if (!id)
