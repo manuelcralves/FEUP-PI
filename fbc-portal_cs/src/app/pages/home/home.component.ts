@@ -4,6 +4,7 @@ import { timer } from 'rxjs';
 import { SessionService } from 'src/app/shared/services/session.service';
 import { InternosService } from 'src/app/shared/services/internos.service';
 import { ComprasService } from 'src/app/shared/services/compras.service';
+import { forkJoin } from 'rxjs';
 
 declare var google: any;
 
@@ -29,35 +30,33 @@ export class HomeComponent implements OnInit {
   }
 
     ngOnInit(): void {
+        this.currentUser = this.sessionService.getUtilizadorFromToken();
 
-
-    this.currentUser = this.sessionService.getUtilizadorFromToken();
-
-    timer(0, 1000).subscribe(()=>{
-      this.DateTime =  new Date();
-    })
-        this.internosService.obterTotalDespesas().subscribe(total => {
-            this.totalDespesas = total;
+        timer(0, 1000).subscribe(() => {
+            this.DateTime = new Date();
         });
 
-        this.comprasService.obterTotalEncomendas().subscribe(total => {
-            this.totalEncomendas = total;
+        forkJoin({
+            totalDespesas: this.internosService.obterTotalDespesas(),
+            totalEncomendas: this.comprasService.obterTotalEncomendas(),
+            totalEncomendasPorAprovar: this.comprasService.obterTotalEncomendasPorAprovar(),
+            totalDespesasPorAprovar: this.internosService.obterTotalDespesasPorAprovar(),
+        }).subscribe(({ totalDespesas, totalEncomendas, totalEncomendasPorAprovar, totalDespesasPorAprovar }) => {
+            this.totalDespesas = totalDespesas;
+            this.totalEncomendas = totalEncomendas;
+            this.totalEncomendasPorAprovar = totalEncomendasPorAprovar;
+            this.totalDespesasPorAprovar = totalDespesasPorAprovar;
+
+            google.charts.load('current', { 'packages': ['corechart'] });
+
+            google.charts.setOnLoadCallback(() => {
+                this.drawChartEncomendas();
+                this.drawChartDespesas();
+                this.drawLineChartEncomendas();
+            });
         });
-
-        this.comprasService.obterTotalEncomendasPorAprovar().subscribe(total => {
-            this.totalEncomendasPorAprovar = total;
-        });
-
-        this.internosService.obterTotalDespesasPorAprovar().subscribe(total => {
-            this.totalDespesasPorAprovar = total;
-        });
-
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(this.drawChartEncomendas.bind(this));
-
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(this.drawChartDespesas.bind(this));
     }
+
 
     drawChartEncomendas() {
         const data = new google.visualization.DataTable();
@@ -84,6 +83,30 @@ export class HomeComponent implements OnInit {
         const chart = new google.visualization.PieChart(document.getElementById('donutChartEncomendas'));
         chart.draw(data, options);
     }
+
+    drawLineChartEncomendas() {
+        const data = new google.visualization.DataTable();
+        data.addColumn('string', 'Trimestre');
+        data.addColumn('number', 'Encomendas Aprovadas');
+        data.addRows([
+            ['Jan-Mar', Math.floor(Math.random() * 1000)], 
+            ['Abr-Jun', Math.floor(Math.random() * 1000)],
+            ['Jul-Set', Math.floor(Math.random() * 1000)],
+            ['Out-Dez', Math.floor(Math.random() * 1000)]
+        ]);
+
+        const options = {
+            title: 'Encomendas Aprovadas por Trimestre',
+            curveType: 'function',
+            legend: { position: 'bottom' },
+            width: 400,
+            height: 300
+        };
+
+        const chart = new google.visualization.LineChart(document.getElementById('lineChartEncomendas'));
+        chart.draw(data, options);
+    }
+
 
     drawChartDespesas() {
         const data = new google.visualization.DataTable();
